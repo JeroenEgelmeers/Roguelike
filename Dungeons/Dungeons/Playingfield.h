@@ -10,6 +10,7 @@ public:
 	~Playingfield();
 	void Generate();
 	void Drawfield();
+
 private:
 	Square* Squarelist;
 	int xsize;

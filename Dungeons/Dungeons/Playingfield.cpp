@@ -12,6 +12,7 @@ Playingfield::Playingfield(int x, int y, int levels)
 void Playingfield::Drawfield()
 {
 	Squarelist->Drawfield();
+	cout << "\n";
 }
 
 void Playingfield::Generate()

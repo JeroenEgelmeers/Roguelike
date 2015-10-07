@@ -12,34 +12,6 @@ Hero::Hero() {
 }
 Hero::~Hero() {}
 
-string Hero::getUserName() {
-	return userName;
-}
-
-int Hero::getLevel() {
-	return level;
-}
-
-int Hero::getHealth() {
-	return health;
-}
-
-float Hero::getXp() {
-	return xp;
-}
-
-int Hero::getAttack() {
-	return attack;
-}
-
-int Hero::getStrength() {
-	return strength;
-}
-
-int Hero::getDefence() {
-	return defence;
-}
-
 int Hero::increaseLevel(int value)
 {
 	level += value;
@@ -83,11 +55,11 @@ int Hero::increaseDefence(int value = 1)
 
 void Hero::getHeroStats()
 {
-	cout << "[[ Your currently level is: " << Hero::getLevel() << " and you've got " << Hero::getXp() << " experience! ]]" << endl
+	cout << "[[ Your currently level is: " << Hero::getLevel() << " and you've got " << Hero::getXp() << " experience! ]] \n"
 		 << "[[ Health: " << Hero::getHealth() << "% || "	 
 		 << "Attack: " << Hero::getAttack() << " || "		 
 		 << "Strength: " << Hero::getStrength() << " || "	 
-		 << "Defence: " << Hero::getDefence() << " ]]"	<< endl;
+		 << "Defence: " << Hero::getDefence() << " ]] \n";
 }
 
 bool Hero::setUserName(string inputUserName) {

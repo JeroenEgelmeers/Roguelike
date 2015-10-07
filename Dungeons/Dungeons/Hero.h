@@ -26,13 +26,13 @@ class Hero
 		}		
 
 		// Getters
-		string	getUserName();
-		int		getLevel();
-		int		getHealth();
-		float	getXp();
-		int		getAttack();
-		int		getStrength();
-		int		getDefence();
+		const string	getUserName() { return userName; }
+		const int		getLevel() { return level; }
+		const int		getHealth() { return health; }
+		const float		getXp() { return xp; }
+		const int		getAttack() { return attack; }
+		const int		getStrength() { return strength; }
+		const int		getDefence() { return defence; }
 
 		// Setters
 		int		increaseLevel(int value);
