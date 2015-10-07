@@ -1,14 +1,14 @@
 #pragma once
 #include "Square.h"
 #include "Monster.h"
-
+#include <string>
 
 using namespace std;
 
 class Room: public Square
 {
 public:
-	Room(int x, int y, Square* parrent);
+	Room(int x, int y);
 	~Room();
 	void CreateNeighbours(int x, int y);
 	string GetDescription();

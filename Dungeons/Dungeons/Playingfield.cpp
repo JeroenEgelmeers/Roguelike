@@ -12,15 +12,13 @@ Playingfield::Playingfield(int x, int y, int levels)
 void Playingfield::Drawfield()
 {
 	Squarelist->Drawfield();
-	cout << "\n\n";
-	//cout << Squarelist->RandomPath(100);
 }
 
 void Playingfield::Generate()
 {
 	if (Squarelist == nullptr)
 	{
-		Squarelist = new Room(0, 0, nullptr);
+		Squarelist = new Room(0, 0);
 		Squarelist->CreateNeighbours(xsize, ysize);
 	}
 	else
