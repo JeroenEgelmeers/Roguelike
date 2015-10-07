@@ -43,6 +43,10 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Playingfield.h">
+    <ClInclude Include="InputController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -72,6 +76,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Playingfield.cpp">
+    <ClCompile Include="InputController.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

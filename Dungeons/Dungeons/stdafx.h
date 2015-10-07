@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <string>
 #include <tchar.h>
+#include <iostream>
+#include <list>
 
 
 
