@@ -2,7 +2,7 @@
 #include "Room.h"
 
 
-Room::Room(int x, int y) : Square(x, y)
+Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 {
 	Description = "Geen Beschrijving";
 	symbol = 'N';
@@ -12,12 +12,12 @@ void Room::CreateNeighbours(int x, int y)
 {
 	if (x > 0)
 	{
-		left = new Hallway (this->x+1, this->y);
-		left->CreateNeighbours(x - 1, y);
+		right = new Hallway (this->x+1, this->y, this);
+		right->CreateNeighbours(x - 1, y);
 	}
 	if (this->x == 0 && y > 0)
 	{
-		down = new Hallway(this->x, this->y + 1);
+		down = new Hallway(this->x, this->y + 1, this);
 		down->CreateNeighbours(x, y - 1);
 	}
 }

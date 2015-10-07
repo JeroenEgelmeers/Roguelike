@@ -4,7 +4,7 @@
 class Hallway: public Square
 {
 public:
-	Hallway(int x, int y);
+	Hallway(int x, int y, Square* parrent);
 	~Hallway();
 	void CreateNeighbours(int x, int y);
 	bool IsAccessable();
