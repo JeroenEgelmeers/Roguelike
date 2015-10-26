@@ -13,6 +13,11 @@ void Playingfield::Drawfield()
 {
 	Squarelist->Drawfield();
 	cout << "\n";
+	Playingfield::getLegenda();
+}
+
+void Playingfield::getLegenda() {
+	cout << "[[ Legenda: N = Normal room || P = Your location ]] \n";
 }
 
 void Playingfield::Generate()

@@ -11,6 +11,8 @@ public:
 	void Generate();
 	void Drawfield();
 
+	void getLegenda();
+
 private:
 	Square* Squarelist;
 	int xsize;
