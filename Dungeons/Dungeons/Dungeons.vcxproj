@@ -19,7 +19,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -81,6 +81,7 @@
   <ItemGroup>
     <ClInclude Include="Dungeons.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Globals.h" />
     <ClInclude Include="Hallway.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InputController.h" />
@@ -95,6 +96,7 @@
   <ItemGroup>
     <ClCompile Include="Dungeons.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Globals.cpp" />
     <ClCompile Include="Hallway.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputController.cpp" />

@@ -9,6 +9,7 @@
 #include "Playingfield.h"
 #include "Hallway.h"
 #include "Room.h"
+#include "Globals.h"
 
 #include <iostream>
 #include <stdio.h>
@@ -16,7 +17,7 @@
 #include <tchar.h>
 #include <iostream>
 #include <list>
-
+#include <ctime>
 
 
 // TODO: reference additional headers your program requires here

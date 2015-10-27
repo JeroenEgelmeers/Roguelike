@@ -10,9 +10,8 @@ public:
 	~Playingfield();
 	void Generate();
 	void Drawfield();
-
 	void getLegenda();
-
+	Square* Startfield;
 private:
 	Square* Squarelist;
 	int xsize;
