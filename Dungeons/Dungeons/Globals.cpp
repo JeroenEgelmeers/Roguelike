@@ -1,14 +1,14 @@
 #include "stdafx.h"
 #include "Globals.h"
 
+bool Globals::seeded = false;
+
 int Globals::Random(int max)
 {
-	srand(time(0) * 1000);
+	if (!seeded)
+	{
+		srand(time(0) * 1000);
+		seeded = true;
+	}
 	return (rand() % max);
-}
-
-int Globals::Random(int min, int max)
-{
-	srand(time(0) * 1000);
-	return (rand() % max) + min;
 }

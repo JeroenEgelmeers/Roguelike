@@ -22,6 +22,9 @@ void Playingfield::getLegenda() {
 
 void Playingfield::Generate()
 {
+	int startx = Globals::Random(10);
+	int starty = Globals::Random(10);
+
 	if (Squarelist == nullptr)
 	{
 		Squarelist = new Room(0, 0);
