@@ -20,19 +20,18 @@ class Hero
 
 		static Hero& Instance()
 		{
-			static Hero    mInstance; // Guaranteed to be destroyed.
-										   // Instantiated on first use.
+			static Hero    mInstance; // Guaranteed to be destroyed. - Instantiated on first use.
 			return mInstance;
 		}		
 
 		// Getters
-		const string	getUserName() { return userName; }
-		const int		getLevel() { return level; }
-		const int		getHealth() { return health; }
-		const float		getXp() { return xp; }
-		const int		getAttack() { return attack; }
-		const int		getStrength() { return strength; }
-		const int		getDefence() { return defence; }
+		const string	getUserName()	{ return userName;	}
+		const int		getLevel()		{ return level;		}
+		const int		getHealth()		{ return health;	}
+		const float		getXp()			{ return xp;		}
+		const int		getAttack()		{ return attack;	}
+		const int		getStrength()	{ return strength;	}
+		const int		getDefence()	{ return defence;	}
 
 		// Setters
 		int		increaseLevel(int value);

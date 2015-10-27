@@ -10,11 +10,18 @@ class Room: public Square
 public:
 	Room(int x, int y);
 	~Room();
+
 	void CreateNeighbours(int x, int y);
+	void generateRoomDescription();
+	void setRoomType(int type);
 	string GetDescription();
 	Monster GetMonster();
 private:
-	Monster Mob;
-	string Description;
+	string generateRoomType(int type);
+
+	Monster mob;
+	string description;
+	string roomType;
+	unsigned char roomSymbol;
 };
 
