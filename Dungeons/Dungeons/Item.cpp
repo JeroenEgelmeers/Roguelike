@@ -25,7 +25,7 @@ void Item::useItem() { /* We do not implement this */ }
 string Item::getItemName() { return itemName; }
 
 string Item::getItemString() {
-	cout << getItemName() << ": " << getDescription() << "\n";
+	 return getItemName() + ": " + getDescription() + "\n";
 }
 
 void Item::gameItems(int id)
