@@ -4,6 +4,7 @@ class Level
 {
 public:
 	Level(int x, int y);
+	Level(int x, int y, Hero heroadr);
 	~Level();
 	void Drawfield();
 

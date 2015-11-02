@@ -100,6 +100,30 @@ Room* Room::GetRoom(int x, int y)
 		return this->down->GetRoom(x, y);
 }
 
+void Room::Drawfield()
+{
+	if (player != nullptr)
+		cout << 'P';
+	else
+	{
+		if (visible)
+			cout << symbol;
+		else
+			cout << '.';
+	}
+
+	if (right != nullptr)
+		right->Drawfield();
+	if (x == 0)
+	{
+		if (down != nullptr)
+		{
+			cout << '\n';
+			down->Drawfield();
+		}
+	}
+}
+
 Monster Room::GetMonster()
 {
 	return mob;

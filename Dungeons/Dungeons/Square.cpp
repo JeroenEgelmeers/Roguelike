@@ -42,7 +42,11 @@ void Square::CreateNeighbours(int x, int y)
 
 void Square::Drawfield()
 {
-	cout << symbol;
+	if (visible || symbol == ' ')
+		cout << symbol;
+	else
+		cout << '.';
+
 	if (right != nullptr)
 		right->Drawfield();
 	if (x == 0)
@@ -53,6 +57,11 @@ void Square::Drawfield()
 			down->Drawfield();
 		}
 	}
+}
+
+void Square::SetSymbol(char c)
+{
+	symbol = c;
 }
 
 Room* Square::GetRoom(int x, int y)

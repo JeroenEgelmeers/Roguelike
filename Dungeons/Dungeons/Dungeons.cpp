@@ -11,8 +11,11 @@ using namespace std;
 
 int _tmain(int argc, _TCHAR* argv[])
 {
+
+	Hero hero;
+
 	Playingfield pf { 10, 10, 1 };
-	pf.Generate();
+	pf.Generate(hero);
 	InputController::Instance().setPlayingField(&pf);
 
 	string currentAction;
@@ -22,7 +25,6 @@ int _tmain(int argc, _TCHAR* argv[])
 	string userName;
 	cin >> userName;
 	
-	Hero hero;
 	if (hero.Instance().setUserName(userName)) {
 		cout << "* Welcome " << userName << ". You're ready to start your adventure! \n";
 	}else { cout << "* You've already set your username " << hero.Instance().userName << "! \n";  }

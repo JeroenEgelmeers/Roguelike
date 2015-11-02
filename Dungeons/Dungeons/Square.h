@@ -9,9 +9,11 @@ public:
 	~Square();
 	int GetX();
 	int GetY();
-	void Drawfield();
+	virtual void Drawfield();
 	virtual void CreateNeighbours(int x, int y);
 	virtual Room* GetRoom(int x, int y);
+	void SetSymbol(char c);
+	bool visible = false;
 protected:
 	int x;
 	char symbol;

@@ -1,5 +1,6 @@
 #pragma once
 #include "Monster.h"
+#include "Hero.h"
 #include "Item.h"
 #include <string>
 
@@ -14,9 +15,11 @@ public:
 	void CreateNeighbours(int x, int y);
 	void generateRoomDescription();
 	void setRoomType(int type);
+	void Drawfield();
 	Room* GetRoom(int x, int y);
 	string GetDescription();
 	Monster GetMonster();
+	Hero* player;
 private:
 	string generateRoomType(int type);
 	Monster mob;

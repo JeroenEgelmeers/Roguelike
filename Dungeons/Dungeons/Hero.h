@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "Room.h"
 using namespace std;
 
 class Hero
@@ -25,21 +26,24 @@ class Hero
 		const int		getAttack()		{ return attack;	}
 		const int		getStrength()	{ return strength;	}
 		const int		getDefence()	{ return defence;	}
+		const Room*		getRoom()		{ return curroom;   }
 
 		// Setters
-		int		increaseLevel(int value);
-		int		removeHealth(int value);
-		int		addHealth(int value);
-		float	increaseXp(int value);
-		int		increaseAttack(int value);
-		int		increaseStrenght(int value);
-		int		increaseDefence(int value);
+		void	increaseLevel(int value);
+		void	removeHealth(int value);
+		void	addHealth(int value);
+		void	increaseXp(int value);
+		void	increaseAttack(int value);
+		void	increaseStrenght(int value);
+		void	increaseDefence(int value);
 		bool	setUserName(string inputUserName);
+		void	setRoom(Room* room);
 
 		// Methods
 		void	getHeroStats();
 	
 	private:
+		Room*	curroom;
 		int		level;
 		int		health;
 		float	xp;
