@@ -23,25 +23,25 @@ void Room::CreateNeighbours(int x, int y)
 }
 
 void Room::generateRoomDescription() {
-	string description = "Description: A";
+	string description = "Description: A ";
 	
-	string roomDescriptions_0[6]{ " clean", " dirty", " scary", " bloody", " smelly", " dusty"};
-	string roomDescriptions_1[8] {" big room", " normal room", " small room", " living room", " kitchen", "bathroom", "bedroom", "work room"};
-	string roomDescriptions_2[5] { " with nothing in it.", " with in the middle a table", " with in the middle a lamp", " with in the middle a skaleton", " with in the middle an computer" };
-	string roomDescriptions_3[13]{ " a skeleton", " a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
+	string roomDescriptions_0[6]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty"};
+	string roomDescriptions_1[9] { "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room"};
+	string roomDescriptions_2[5] { "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skaleton", "with in the middle an computer" };
+	string roomDescriptions_3[13]{ "a skeleton", "a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
 
 	int getDescription = rand() % 7;
 	description += roomDescriptions_0[getDescription];
 
-	getDescription = rand() % 9; // 0-5
-	description += roomDescriptions_1[getDescription];
+	getDescription = rand() % 10; // 0-5
+	description += " " + roomDescriptions_1[getDescription];
 
 	getDescription = rand() % 6;
-	description += roomDescriptions_2[getDescription];
+	description += " " + roomDescriptions_2[getDescription];
 
 	if (getDescription > 0) {
-		getDescription = rand() % 10;
-		description += "and in the corner" + roomDescriptions_3[getDescription];
+		getDescription = rand() % 14;
+		description += "and in the corner " + roomDescriptions_3[getDescription];
 	}
 }
 

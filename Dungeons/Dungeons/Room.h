@@ -1,5 +1,6 @@
 #pragma once
 #include "Monster.h"
+#include "Item.h"
 #include <string>
 
 using namespace std;
@@ -19,6 +20,7 @@ public:
 private:
 	string generateRoomType(int type);
 	Monster mob;
+	Item item;
 	string description;
 	string roomType;
 	unsigned char roomSymbol;

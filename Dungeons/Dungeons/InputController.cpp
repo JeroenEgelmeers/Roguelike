@@ -35,25 +35,22 @@ void InputController::CheckInput() {
 	else if (input == "!map") { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north") { /* move north */ }
-	else if (input == "!east") { /* move east */ }
-	else if (input == "!south") { /* move south */ }
-	else if (input == "!west") { /* move west */ }
+	else if (input == "!north")		{ /* move north */	}
+	else if (input == "!east")		{ /* move east */	}
+	else if (input == "!south")		{ /* move south */	}
+	else if (input == "!west")		{  /* move west */	}
 
 	// System commands
-	else if (input == "!quit") { quitGame(); }
+	else if (input == "!quit")		{ quitGame(); }
 	
 	// Cheat functions.
-	else if (input == "@heal") { Hero::Instance().addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
+	else if (input == "@heal")		{ Hero::Instance().addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
 
 	// Errors
 	else { cout << "* No command found." << endl; }
 }
 
-void InputController::setPlayingField(Playingfield* setPf)
-{
-	pf = setPf;
-}
+void InputController::setPlayingField(Playingfield* setPf) { pf = setPf; }
 
 void InputController::quitGame()
 {

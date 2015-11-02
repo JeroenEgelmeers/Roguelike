@@ -8,13 +8,6 @@ class Hero
 	public:
 		string userName;
 
-		int		level;
-		int		health;
-		float	xp;
-		int		attack;
-		int		strength;
-		int		defence;
-
 		Hero();
 		~Hero();
 
@@ -45,10 +38,17 @@ class Hero
 
 		// Methods
 		void	getHeroStats();
+	
 	private:
+		int		level;
+		int		health;
+		float	xp;
+		int		attack;
+		int		strength;
+		int		defence;
+
 		// Getters
-		// N/A
+		
 		// Setters
-		// N/A
 };
 
