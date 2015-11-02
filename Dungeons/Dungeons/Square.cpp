@@ -3,11 +3,24 @@
 
 using namespace std;
 
-Square::Square(int x, int y)
+Square::Square(int x, int y, Square* parrent)
 {
 	this->x = x;
 	this->y = y;
 	symbol = ' ';
+
+	if (x == 0)
+		up = parrent;
+	else
+	{
+		left = parrent;
+		
+		if (y != 0)
+		{
+			left->up->right->down = this;
+			up = left->up->right;
+		}
+	}
 }
 
 int Square::GetX()
@@ -23,15 +36,15 @@ int Square::GetY()
 void Square::CreateNeighbours(int x, int y)
 {
 	// empty squares are never on edges, and are only and always surrounded by hallways
-	left = new Hallway(this->x + 1, this->y);
-	left->CreateNeighbours(x, y);
+	right = new Hallway(this->x + 1, this->y, this);
+	right->CreateNeighbours(x, y);
 }
 
 void Square::Drawfield()
 {
 	cout << symbol;
-	if (left != nullptr)
-		left->Drawfield();
+	if (right != nullptr)
+		right->Drawfield();
 	if (x == 0)
 	{
 		if (down != nullptr)
@@ -42,7 +55,13 @@ void Square::Drawfield()
 	}
 }
 
-
+Room* Square::GetRoom(int x, int y)
+{
+	if (x > (this->x / 2))
+		return this->right->GetRoom(x, y);
+	else
+		return this->down->GetRoom(x,y);
+}
 
 Square::~Square()
 {

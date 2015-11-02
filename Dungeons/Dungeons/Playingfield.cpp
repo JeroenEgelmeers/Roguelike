@@ -1,17 +1,16 @@
 #include "stdafx.h"
 #include "Playingfield.h"
 
-
 Playingfield::Playingfield(int x, int y, int levels)
 {
 	xsize = x;
 	ysize = y;
-	this->levels = levels;
+	this->lsize = levels;
 }
 
 void Playingfield::Drawfield()
 {
-	Squarelist->Drawfield();
+	levels[0]->Drawfield();
 	cout << "\n";
 	Playingfield::getLegenda();
 }
@@ -22,22 +21,28 @@ void Playingfield::getLegenda() {
 
 void Playingfield::Generate()
 {
-	int startx = Globals::Random(10);
-	int starty = Globals::Random(10);
-
-	if (Squarelist == nullptr)
+	for (int i = 0; i < lsize; i++)
 	{
-		Squarelist = new Room(0, 0);
-		Squarelist->CreateNeighbours(xsize, ysize);
-	}
-	else
-	{
-		delete Squarelist;
-		this->Generate();
+		if (levels.size() == 0)
+		{
+			levels.push_back(new Level(xsize, ysize));
+		}
+		else
+		{
+			for each (Level* ptr in levels)
+			{
+				delete ptr;
+			}
+			this->Generate();
+			break;
+		}
 	}
 }
 
 Playingfield::~Playingfield()
 {
-	delete Squarelist;
+	for each (Level* ptr in levels)
+	{
+		delete ptr;
+	}
 }

@@ -1,7 +1,7 @@
 #pragma once
-#include "Square.h"
-#include "Room.h"
-#include "Hallway.h"
+
+
+using namespace std;
 
 class Playingfield
 {
@@ -11,11 +11,10 @@ public:
 	void Generate();
 	void Drawfield();
 	void getLegenda();
-	Square* Startfield;
 private:
-	Square* Squarelist;
 	int xsize;
 	int ysize;
-	int levels;
+	int lsize;
+	vector<Level*> levels;
 };
 
