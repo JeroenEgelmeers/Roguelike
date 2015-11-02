@@ -29,22 +29,22 @@ void InputController::CheckInput() {
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
-	else if (input == "!stats") { Hero::Instance().getHeroStats(); }
+	else if (input == "!stats") { Hero::Instance()->getHeroStats(); }
 
 	// Game commands
 	else if (input == "!map") { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north")		{ /* move north */	}
-	else if (input == "!east")		{ /* move east */	}
-	else if (input == "!south")		{ /* move south */	}
-	else if (input == "!west")		{  /* move west */	}
+	else if (input == "!north")		{ Hero::Instance()->moveHero(0); }
+	else if (input == "!east")		{ Hero::Instance()->moveHero(1); }
+	else if (input == "!south")		{ Hero::Instance()->moveHero(2); }
+	else if (input == "!west")		{ Hero::Instance()->moveHero(3); }
 
 	// System commands
 	else if (input == "!quit")		{ quitGame(); }
 	
 	// Cheat functions.
-	else if (input == "@heal")		{ Hero::Instance().addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
+	else if (input == "@heal")		{ Hero::Instance()->addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
 
 	// Errors
 	else { cout << "* No command found." << endl; }
@@ -54,7 +54,7 @@ void InputController::setPlayingField(Playingfield* setPf) { pf = setPf; }
 
 void InputController::quitGame()
 {
-	cout << "* You're not yet done " << Hero::Instance().getUserName() << "! Are you sure to quit the game? Your progress will be lost! (Press: !yes or !no) \n";
+	cout << "* You're not yet done " << Hero::Instance()->getUserName() << "! Are you sure to quit the game? Your progress will be lost! (Press: !yes or !no) \n";
 	string input;
 	cin >> input;
 	if (input == "!yes") { Game::Instance().setGameLoop(false); }

@@ -9,13 +9,12 @@ class Hero
 	public:
 		string userName;
 
-		Hero();
 		~Hero();
 
-		static Hero& Instance()
+		static Hero* Instance()
 		{
-			static Hero    mInstance; // Guaranteed to be destroyed. - Instantiated on first use.
-			return mInstance;
+			static Hero mInstance; // Guaranteed to be destroyed. - Instantiated on first use.
+			return &mInstance;
 		}		
 
 		// Getters
@@ -41,7 +40,13 @@ class Hero
 
 		// Methods
 		void	getHeroStats();
+		void	moveHero(int direction);
 	
+	protected:
+		Hero();
+		Hero(const Hero&);
+		Hero& operator= (const Hero&);
+
 	private:
 		Room*	curroom;
 		int		level;

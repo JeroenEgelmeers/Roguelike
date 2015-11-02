@@ -75,4 +75,9 @@ void Hero::setRoom(Room* room)
 	cout << curroom->GetY();*/
 }
 
+void Hero::moveHero(int direction)
+{
+	curroom->MovePlayer(direction);
+}
+
 

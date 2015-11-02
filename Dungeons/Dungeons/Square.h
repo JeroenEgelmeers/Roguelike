@@ -14,13 +14,13 @@ public:
 	virtual Room* GetRoom(int x, int y);
 	void SetSymbol(char c);
 	bool visible = false;
-protected:
-	int x;
-	char symbol;
-	int y;
 	Square* up;
 	Square* left;
 	Square* right;
 	Square* down;
+protected:
+	int x;
+	char symbol;
+	int y;
 };
 

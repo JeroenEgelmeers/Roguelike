@@ -20,6 +20,7 @@ public:
 	string GetDescription();
 	Monster GetMonster();
 	Hero* player;
+	void MovePlayer(int direction);
 private:
 	string generateRoomType(int type);
 	Monster mob;

@@ -124,6 +124,67 @@ void Room::Drawfield()
 	}
 }
 
+void Room::MovePlayer(int direction)
+{
+	Room* nextrm = nullptr;
+	switch (direction)
+	{
+	case 0:
+		if (up != nullptr)
+		{
+			nextrm = dynamic_cast<Room*>(up->up);
+			nextrm->player = this->player;
+			this->player->setRoom(nextrm);
+			this->player = nullptr;
+			this->visible = true;
+		}
+		break;
+	case 1:
+		if (right != nullptr)
+		{
+			nextrm = dynamic_cast<Room*>(right->right);
+			nextrm->player = this->player;
+			this->player->setRoom(nextrm);
+			this->player = nullptr;
+			this->visible = true;
+		}
+		break;
+	case 2:
+		if (down != nullptr)
+		{
+			nextrm = dynamic_cast<Room*>(down->down);
+			nextrm->player = this->player;
+			this->player->setRoom(nextrm);
+			this->player = nullptr;
+			this->visible = true;
+		}
+		break;
+	case 3:
+		if (left != nullptr)
+		{
+			nextrm = dynamic_cast<Room*>(left->left);
+			nextrm->player = this->player;
+			this->player->setRoom(nextrm);
+			this->player = nullptr;
+			this->visible = true;
+		}
+		break;
+	default:
+		break;
+	}
+	if (nextrm != nullptr)
+	{
+		if (nextrm->up != nullptr)
+			nextrm->up->visible = true;
+		if (nextrm->left != nullptr)
+			nextrm->left->visible = true;
+		if (nextrm->down != nullptr)
+			nextrm->down->visible = true;
+		if (nextrm->right != nullptr)
+			nextrm->right->visible = true;
+	}
+}
+
 Monster Room::GetMonster()
 {
 	return mob;

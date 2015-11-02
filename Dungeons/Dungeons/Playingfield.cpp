@@ -19,16 +19,13 @@ void Playingfield::getLegenda() {
 	cout << "[[ Legenda: N = Normal room || P = Your location ]] \n";
 }
 
-void Playingfield::Generate(Hero heroadr)
+void Playingfield::Generate()
 {
 	for (int i = 0; i < lsize; i++)
 	{
 		if (levels.size() == 0)
 		{
-			if (i == 0)
-				levels.push_back(new Level(xsize, ysize, heroadr));
-			else
-				levels.push_back(new Level(xsize, ysize));
+			levels.push_back(new Level(xsize, ysize));
 		}
 		else
 		{
@@ -36,10 +33,11 @@ void Playingfield::Generate(Hero heroadr)
 			{
 				delete ptr;
 			}
-			this->Generate(heroadr);
+			this->Generate();
 			break;
 		}
 	}
+	levels[0]->SetPlayer();
 }
 
 Playingfield::~Playingfield()

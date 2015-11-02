@@ -8,7 +8,7 @@ class Playingfield
 public:
 	Playingfield(int x, int y, int levels);
 	~Playingfield();
-	void Generate(Hero heroadr);
+	void Generate();
 	void Drawfield();
 	void getLegenda();
 private:
