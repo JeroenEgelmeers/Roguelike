@@ -26,7 +26,7 @@ void Room::generateRoomDescription() {
 	string description = "Description: A ";
 	
 	string roomDescriptions_0[6]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty"};
-	string roomDescriptions_1[9] {"big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room"};
+	string roomDescriptions_1[9] { "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room"};
 	string roomDescriptions_2[5] { "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skaleton", "with in the middle an computer" };
 	string roomDescriptions_3[13]{ "a skeleton", "a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
 

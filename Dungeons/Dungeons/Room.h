@@ -1,6 +1,7 @@
 #pragma once
 #include "Square.h"
 #include "Monster.h"
+#include "Item.h"
 #include <string>
 
 using namespace std;
@@ -18,8 +19,8 @@ public:
 	Monster GetMonster();
 private:
 	string generateRoomType(int type);
-
 	Monster mob;
+	Item item;
 	string description;
 	string roomType;
 	unsigned char roomSymbol;

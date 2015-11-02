@@ -10,5 +10,4 @@ Boss::Boss()
 	setMonsterDescription("A powerfull dragon");
 }
 
-
 Boss::~Boss() { }
