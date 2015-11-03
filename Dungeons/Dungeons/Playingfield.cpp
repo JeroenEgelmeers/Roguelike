@@ -37,8 +37,8 @@ void Playingfield::Generate()
 			Globals::itemlist.push_back(x);
 		}
 
-		// elke kamer, min de trappen, min degene met een item
-		for (int x = 0; x < ((xsize*ysize*lsize) - (2 * lsize)) - 21; x++)
+		// elke kamer, min degene met een item
+		for (int x = 0; x < (xsize*ysize*lsize) - 21; x++)
 			Globals::itemlist.push_back(-1);
 
 		shuffle(Globals::itemlist.begin(), Globals::itemlist.end(), default_random_engine(Globals::Random(100)));

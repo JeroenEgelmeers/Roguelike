@@ -84,6 +84,7 @@
     <ClInclude Include="Dungeons.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Globals.h" />
+    <ClInclude Include="Goblin.h" />
     <ClInclude Include="Hallway.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InputController.h" />
@@ -103,6 +104,7 @@
     <ClCompile Include="Dungeons.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Globals.cpp" />
+    <ClCompile Include="Goblin.cpp" />
     <ClCompile Include="Hallway.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputController.cpp" />

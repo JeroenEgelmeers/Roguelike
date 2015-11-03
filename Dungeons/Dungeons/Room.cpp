@@ -8,10 +8,13 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	symbol = 'N';
 	generateRoomDescription();
 	generateMonster();
-	//if (Globals::itemlist.back() != -1)
-	//	item.generateItem(Globals::itemlist.back());
-	//Globals::itemlist.pop_back();
-	//cout << item.getItemName() << "at x:" << GetX() << " y:" << GetY();
+	if (Globals::itemlist.size() >= 1)
+	{
+		if (Globals::itemlist.back() != -1)
+			item.generateItem(Globals::itemlist.back());
+		Globals::itemlist.pop_back();
+	}	
+	cout << item.getItemName() << "at x:" << GetX() << " y:" << GetY();
 }
 
 void Room::CreateNeighbours(int x, int y)
