@@ -11,12 +11,12 @@ Playingfield::Playingfield(int x, int y, int levels)
 void Playingfield::Drawfield()
 {
 	levels[curlevel]->Drawfield();
-	cout << "\n";
+	cout << "\n" << "Level " << curlevel << "\n";
 	Playingfield::getLegenda();
 }
 
 void Playingfield::getLegenda() {
-	cout << "[[ Legenda: N = Normal room || P = Your location || T = Stairway Down || S = Startpoint/Stairway Up || -|]] \n";
+	cout << "[[ Legenda: N = Normal room || P = Your location || T = Stairway Down || S = Startpoint/Stairway Up || -| = Hallway ]] \n";
 }
 
 void Playingfield::Generate()
@@ -27,10 +27,22 @@ void Playingfield::Generate()
 		{
 			delete ptr;
 		}
+		Globals::itemlist.clear();
 		this->Generate();
 	}
 	else
 	{
+		for (int x = 0; x < 21; x++)
+		{
+			Globals::itemlist.push_back(x);
+		}
+
+		// elke kamer, min de trappen, min degene met een item
+		for (int x = 0; x < ((xsize*ysize*lsize) - (2 * lsize)) - 21; x++)
+			Globals::itemlist.push_back(-1);
+
+		shuffle(Globals::itemlist.begin(), Globals::itemlist.end(), default_random_engine(Globals::Random(100)));
+
 		for (int i = 0; i < lsize; i++)
 		{
 			levels.push_back(new Level(xsize, ysize));
@@ -38,27 +50,26 @@ void Playingfield::Generate()
 		levels[0]->SetPlayer();
 		curlevel = 0;
 	}
-	for each (Level* lv in levels)
-	{
-		cout << "level\n";
-	}
 }
 
 void Playingfield::switchLevel(int level)
 {
 	levels[level]->SetPlayer();
+	curlevel = level;
 }
 
 void Playingfield::goLevelUp()
 {
+	curlevel++;
 	if (curlevel < lsize)
-		levels[curlevel-1]->SetPlayer();
+		levels[curlevel]->SetPlayer();
 }
 
 void Playingfield::goLevelDown()
 {
+	curlevel--;
 	if (curlevel > 0)
-		levels[curlevel-1]->ReturnPlayer();
+		levels[curlevel]->ReturnPlayer();
 }
 
 Playingfield::~Playingfield()

@@ -23,7 +23,7 @@ public:
 	Monster*	GetMonster();
 	Hero*		player;
 	void		setSpecialDescription(int id);
-	void		MovePlayer(int direction);
+	bool		MovePlayer(int direction);
 private:
 	string		generateRoomType(int type);
 	Item		item;

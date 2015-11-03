@@ -3,6 +3,8 @@
 
 bool Globals::seeded = false;
 
+vector<int> Globals::itemlist;
+
 int Globals::Random(int max)
 {
 	if (!seeded)

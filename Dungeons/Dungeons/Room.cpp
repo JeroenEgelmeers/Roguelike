@@ -8,6 +8,10 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	symbol = 'N';
 	generateRoomDescription();
 	generateMonster();
+	//if (Globals::itemlist.back() != -1)
+	//	item.generateItem(Globals::itemlist.back());
+	//Globals::itemlist.pop_back();
+	//cout << item.getItemName() << "at x:" << GetX() << " y:" << GetY();
 }
 
 void Room::CreateNeighbours(int x, int y)
@@ -159,7 +163,7 @@ void Room::Drawfield()
 	}
 }
 
-void Room::MovePlayer(int direction)
+bool Room::MovePlayer(int direction)
 {
 	Room* nextrm = nullptr;
 	switch (direction)
@@ -173,6 +177,8 @@ void Room::MovePlayer(int direction)
 			this->player = nullptr;
 			this->visible = true;
 		}
+		else
+			return false;
 		break;
 	case 1:
 		if (right != nullptr)
@@ -183,6 +189,8 @@ void Room::MovePlayer(int direction)
 			this->player = nullptr;
 			this->visible = true;
 		}
+		else
+			return false;
 		break;
 	case 2:
 		if (down != nullptr)
@@ -193,6 +201,8 @@ void Room::MovePlayer(int direction)
 			this->player = nullptr;
 			this->visible = true;
 		}
+		else
+			return false;
 		break;
 	case 3:
 		if (left != nullptr)
@@ -203,6 +213,8 @@ void Room::MovePlayer(int direction)
 			this->player = nullptr;
 			this->visible = true;
 		}
+		else
+			return false;
 		break;
 	default:
 		break;
@@ -218,6 +230,7 @@ void Room::MovePlayer(int direction)
 		if (nextrm->right != nullptr)
 			nextrm->right->visible = true;
 	}
+	return true;
 }
 
 

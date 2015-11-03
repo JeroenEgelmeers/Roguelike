@@ -13,6 +13,8 @@
 #include <vector>
 #include <list>
 #include <ctime>
+#include <algorithm>
+#include <random>
 
 #include "targetver.h"
 #include "Globals.h"

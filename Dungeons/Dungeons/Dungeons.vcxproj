@@ -87,6 +87,7 @@
     <ClInclude Include="Hallway.h" />
     <ClInclude Include="Hero.h" />
     <ClInclude Include="InputController.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="Monster.h" />
@@ -105,6 +106,7 @@
     <ClCompile Include="Hallway.cpp" />
     <ClCompile Include="Hero.cpp" />
     <ClCompile Include="InputController.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="Monster.cpp" />

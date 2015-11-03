@@ -3,8 +3,6 @@
 #include "Playingfield.h"
 #include "Hero.h"
 #include "Game.h"
-#include <string>
-#include <algorithm>
 using namespace std;
 
 InputController::InputController(){}
@@ -68,7 +66,7 @@ void InputController::CheckInput() {
 	}
 	else if (input == "!getitem") {
 		cout << "This function is not yet implemented! \n";
-		// inventory.addItem(item);
+		//inventory.addItem(item);
 	
 		// cout << "You did just pick + item.getItemName";
 	}
