@@ -1,5 +1,5 @@
 #pragma once
-class Rat : Monster
+class Rat: public Monster
 {
 public:
 	Rat();

@@ -7,6 +7,7 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	description = "Geen Beschrijving";
 	symbol = 'N';
 	generateRoomDescription();
+	generateMonster();
 }
 
 void Room::CreateNeighbours(int x, int y)
@@ -25,10 +26,10 @@ void Room::CreateNeighbours(int x, int y)
 
 void Room::generateRoomDescription() {
 	string description = "\n A ";
-	
-	string roomDescriptions_0[7]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy"};
-	string roomDescriptions_1[9] { "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room"};
-	string roomDescriptions_2[5] { "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skeleton", "with in the middle an computer" };
+
+	string roomDescriptions_0[7]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy" };
+	string roomDescriptions_1[9]{ "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room" };
+	string roomDescriptions_2[5]{ "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skeleton", "with in the middle an computer" };
 	string roomDescriptions_3[13]{ "a skeleton", "a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
 
 	int getDescription = Globals::Random(7);
@@ -219,9 +220,18 @@ void Room::MovePlayer(int direction)
 	}
 }
 
-Monster Room::GetMonster()
+
+void Room::generateMonster()
 {
-	return mob;
+	int randomMonster = rand() % 2;
+	switch (randomMonster) {
+	case 0:
+		monster = new Rat();
+		break;
+	case 1:
+		monster = new Boss();
+		break;
+	}
 }
 
 Room::~Room()

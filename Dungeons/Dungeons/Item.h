@@ -14,6 +14,7 @@ public:
 	string  getItemString();
 
 	void	generateItem();
+	void	generateItem(int itemId);
 
 	bool	operator==(const Item& other);
 
@@ -22,7 +23,6 @@ private:
 	string	itemName;
 	string	itemDescription;
 
-	void	generateItem(int itemId);
 	void	gameItems(int id);
 
 	void	setItem(int id);

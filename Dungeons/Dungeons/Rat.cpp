@@ -2,7 +2,7 @@
 #include "Rat.h"
 
 
-Rat::Rat()
+Rat::Rat() : Monster()
 {
 	// Hard coded, can be changed later..
 	setMonsterName("Rat");

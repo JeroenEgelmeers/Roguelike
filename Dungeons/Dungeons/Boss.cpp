@@ -2,7 +2,7 @@
 #include "Boss.h"
 
 
-Boss::Boss()
+Boss::Boss() : Monster()
 {
 	// Hard coded, can be changed later..
 	setMonsterName("Boss - Elvrag");

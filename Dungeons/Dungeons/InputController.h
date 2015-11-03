@@ -2,6 +2,7 @@
 #include "stdafx.h"
 #include <string>
 //#include "Playingfield.h"
+#include "Inventory.h"
 
 class Playingfield;
 
@@ -21,5 +22,6 @@ private:
 	void quitGame();
 
 	Playingfield* pf;
+	Inventory inventory;
 };
 
