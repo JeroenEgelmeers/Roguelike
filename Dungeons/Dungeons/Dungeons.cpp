@@ -12,7 +12,7 @@ using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
 
-	Playingfield pf { 10, 10, 1 };
+	Playingfield pf { 10, 10, 2 };
 	pf.Generate();
 	InputController::Instance().setPlayingField(&pf);
 

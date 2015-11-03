@@ -10,34 +10,55 @@ Playingfield::Playingfield(int x, int y, int levels)
 
 void Playingfield::Drawfield()
 {
-	levels[0]->Drawfield();
+	levels[curlevel]->Drawfield();
 	cout << "\n";
 	Playingfield::getLegenda();
 }
 
 void Playingfield::getLegenda() {
-	cout << "[[ Legenda: N = Normal room || P = Your location ]] \n";
+	cout << "[[ Legenda: N = Normal room || P = Your location || T = Stairway Down || S = Startpoint/Stairway Up || -|]] \n";
 }
 
 void Playingfield::Generate()
 {
-	for (int i = 0; i < lsize; i++)
+	if (levels.size() != 0)
 	{
-		if (levels.size() == 0)
+		for each (Level* ptr in levels)
+		{
+			delete ptr;
+		}
+		this->Generate();
+	}
+	else
+	{
+		for (int i = 0; i < lsize; i++)
 		{
 			levels.push_back(new Level(xsize, ysize));
 		}
-		else
-		{
-			for each (Level* ptr in levels)
-			{
-				delete ptr;
-			}
-			this->Generate();
-			break;
-		}
+		levels[0]->SetPlayer();
+		curlevel = 0;
 	}
-	levels[0]->SetPlayer();
+	for each (Level* lv in levels)
+	{
+		cout << "level\n";
+	}
+}
+
+void Playingfield::switchLevel(int level)
+{
+	levels[level]->SetPlayer();
+}
+
+void Playingfield::goLevelUp()
+{
+	if (curlevel < lsize)
+		levels[curlevel-1]->SetPlayer();
+}
+
+void Playingfield::goLevelDown()
+{
+	if (curlevel > 0)
+		levels[curlevel-1]->ReturnPlayer();
 }
 
 Playingfield::~Playingfield()

@@ -40,6 +40,12 @@ Level::Level(int x, int y)
 	startpoint->setSpecialDescription(0);
 	stairway->setSpecialDescription(1);
 
+	cout << "\n\n x: ";
+	cout << stairway->GetX();
+	cout << " y: ";
+	cout << stairway->GetY();
+	cout << "\n\n";
+
 	startpoint->player = Hero::Instance();
 
 	if (startpoint != nullptr)
@@ -58,6 +64,11 @@ Level::Level(int x, int y)
 void Level::SetPlayer()
 {
 	Hero::Instance()->setRoom(startpoint);
+}
+
+void Level::ReturnPlayer()
+{
+	Hero::Instance()->setRoom(stairway);
 }
 
 void Level::Drawfield()

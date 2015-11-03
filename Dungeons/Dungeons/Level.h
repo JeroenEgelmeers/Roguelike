@@ -7,6 +7,7 @@ public:
 	~Level();
 	void Drawfield();
 	void SetPlayer();
+	void ReturnPlayer();
 
 	Room* startpoint;
 	Room* stairway;

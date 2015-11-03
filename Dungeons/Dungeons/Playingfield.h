@@ -11,10 +11,14 @@ public:
 	void Generate();
 	void Drawfield();
 	void getLegenda();
+	void switchLevel(int level);
+	void goLevelUp();
+	void goLevelDown();
 private:
 	int xsize;
 	int ysize;
 	int lsize;
+	int curlevel;
 	vector<Level*> levels;
 };
 
