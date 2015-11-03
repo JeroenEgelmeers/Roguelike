@@ -7,13 +7,13 @@ Item::~Item(){}
 
 void Item::generateItem()
 {
-
+	int randomItem = rand() % 21;
+	gameItems(randomItem);
 }
 
 void Item::generateItem(int itemId) 
 { 
-	int randomItem = rand() % 21;
-	gameItems(randomItem);
+	gameItems(itemId);
 }
 
 void Item::setItem(int id) {

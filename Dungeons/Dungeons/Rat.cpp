@@ -10,7 +10,7 @@ Rat::Rat()
 	setMonsterDescription("A giant rat");
 }
 
-
 Rat::~Rat()
 {
+
 }
