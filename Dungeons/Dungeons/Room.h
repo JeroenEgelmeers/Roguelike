@@ -24,11 +24,11 @@ public:
 	Hero*		player;
 	void		setSpecialDescription(int id);
 	bool		MovePlayer(int direction);
-	Item		GetItem();
+	Item*		GetItem();
 	void		RemoveItem();
 private:
 	string		generateRoomType(int type);
-	Item		item;
+	Item*		item;
 	Monster*	monster;
 	string		description;
 	string		 roomType;

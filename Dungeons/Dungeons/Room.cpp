@@ -8,15 +8,16 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	symbol = 'N';
 	generateRoomDescription();
 	generateMonster();
+	item = new Item();
 	if (Globals::itemlist.size() >= 1)
 	{
 		if (Globals::itemlist.back() != -1)
-			item.generateItem(Globals::itemlist.back());
+			item->generateItem(Globals::itemlist.back());
 		Globals::itemlist.pop_back();
 	}	
 }
 
-Item Room::GetItem()
+Item* Room::GetItem()
 {
 	return item;
 }
