@@ -1,5 +1,6 @@
 #pragma once
 #include "Monster.h"
+#include "Goblin.h"
 #include "Rat.h"
 #include "Boss.h"
 #include "Hero.h"
@@ -19,7 +20,7 @@ public:
 	void		Drawfield();
 	Room*		GetRoom(int x, int y);
 	string		GetDescription();
-	Monster		GetMonster();
+	Monster*	GetMonster();
 	Hero*		player;
 	void		setSpecialDescription(int id);
 	void		MovePlayer(int direction);

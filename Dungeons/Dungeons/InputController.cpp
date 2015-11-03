@@ -36,28 +36,32 @@ void InputController::CheckInput() {
 
 	// Direction commands
 	else if (input == "!north")
-	{
+	{	
 		Hero::Instance()->moveHero(0);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+		monsterDetection();
 	}
 	else if (input == "!east")
 	{
 		Hero::Instance()->moveHero(1);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+		monsterDetection();
 	}
 	else if (input == "!south")
 	{
 		Hero::Instance()->moveHero(2);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+		monsterDetection();
 	}
 	else if (input == "!west")
 	{
 		Hero::Instance()->moveHero(3);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+		monsterDetection();
 	}
 	else if (input == "!inventory") {
 		cout << inventory.getItems();
@@ -76,6 +80,14 @@ void InputController::CheckInput() {
 
 	// Errors
 	else { cout << "* No command found." << endl; }
+}
+
+void InputController::monsterDetection() {
+	if (Hero::Instance()->getRoom()->GetMonster() != nullptr)
+	{
+		cout << "/!\\ Watch out! There is a something in this room!\n";
+		Hero::Instance()->getRoom()->GetMonster()->getMonsterStats();
+	}
 }
 
 void InputController::setPlayingField(Playingfield* setPf) { pf = setPf; }

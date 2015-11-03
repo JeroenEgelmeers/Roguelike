@@ -223,14 +223,28 @@ void Room::MovePlayer(int direction)
 
 void Room::generateMonster()
 {
-	int randomMonster = rand() % 2;
+	int randomMonster = rand() % 10;
 	switch (randomMonster) {
 	case 0:
 		monster = new Rat();
 		break;
 	case 1:
-		monster = new Boss();
+		monster = new Goblin();
 		break;
+	default:
+		// No monster
+		break;
+	}
+}
+
+
+Monster* Room::GetMonster()
+{
+	if (monster != nullptr) {
+		return monster;
+	}
+	else {
+		return nullptr;
 	}
 }
 

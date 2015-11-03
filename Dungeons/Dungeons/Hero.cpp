@@ -49,7 +49,7 @@ void Hero::increaseDefence(int value = 1)
 void Hero::getHeroStats()
 {
 	cout << "[[ Your currently level is: " << Hero::getLevel() << " and you've got " << Hero::getXp() << " experience! ]] \n"
-		 << "[[ Health: " << Hero::getHealth() << "% || "	 
+		 << "[[ Health: " << Hero::getHealth() << " HP || "	 
 		 << "Attack: " << Hero::getAttack() << " || "		 
 		 << "Strength: " << Hero::getStrength() << " || "	 
 		 << "Defence: " << Hero::getDefence() << " ]] \n";

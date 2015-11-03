@@ -20,6 +20,7 @@ public:
 	void setPlayingField(Playingfield* setPf);
 private:
 	void quitGame();
+	void monsterDetection();
 
 	Playingfield* pf;
 	Inventory inventory;
