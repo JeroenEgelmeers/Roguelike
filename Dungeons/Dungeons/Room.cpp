@@ -8,11 +8,13 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	symbol = 'N';
 	generateRoomDescription();
 	generateMonster();
-	item = new Item();
 	if (Globals::itemlist.size() >= 1)
 	{
 		if (Globals::itemlist.back() != -1)
+		{
+			item = new Item();
 			item->generateItem(Globals::itemlist.back());
+		}
 		Globals::itemlist.pop_back();
 	}	
 }
