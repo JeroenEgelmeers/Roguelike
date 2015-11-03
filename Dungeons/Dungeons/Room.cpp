@@ -14,7 +14,6 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 			item.generateItem(Globals::itemlist.back());
 		Globals::itemlist.pop_back();
 	}	
-	cout << item.getItemName() << "at x:" << GetX() << " y:" << GetY();
 }
 
 void Room::CreateNeighbours(int x, int y)
