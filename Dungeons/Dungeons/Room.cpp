@@ -29,7 +29,7 @@ void Room::CreateNeighbours(int x, int y)
 }
 
 void Room::generateRoomDescription() {
-	string description = "\n A ";
+	string description = " A ";
 
 	string roomDescriptions_0[7]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy" };
 	string roomDescriptions_1[9]{ "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room" };

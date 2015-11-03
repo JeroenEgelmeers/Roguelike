@@ -35,31 +35,47 @@ void InputController::CheckInput() {
 	// Direction commands
 	else if (input == "!north")
 	{	
-		Hero::Instance()->moveHero(0);
-		cout << "* You entered the next room. \n";
-		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
-		monsterDetection();
+		if (Hero::Instance()->moveHero(0)) {
+			cout << "* You entered the next room. \n";
+			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			monsterDetection();
+		}
+		else {
+			cout << "[!] You can't go that way! Go to another direction: [ !east - !south - !west ] \n";
+		}
 	}
 	else if (input == "!east")
 	{
-		Hero::Instance()->moveHero(1);
-		cout << "* You entered the next room. \n";
-		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
-		monsterDetection();
+		if (Hero::Instance()->moveHero(1)) {
+			cout << "* You entered the next room. \n";
+			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			monsterDetection();
+		}
+		else {
+			cout << "[!] You can't go that way! Go to another direction: [ !north - !south - !west ] \n";
+		}
 	}
 	else if (input == "!south")
 	{
-		Hero::Instance()->moveHero(2);
-		cout << "* You entered the next room. \n";
-		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
-		monsterDetection();
+		if (Hero::Instance()->moveHero(2)) {
+			cout << "* You entered the next room. \n";
+			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			monsterDetection();
+		}
+		else {
+			cout << "[!] You can't go that way! Go to another direction: [ !north - !east - !west ] \n";
+		}
 	}
 	else if (input == "!west")
 	{
-		Hero::Instance()->moveHero(3);
-		cout << "* You entered the next room. \n";
-		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
-		monsterDetection();
+		if (Hero::Instance()->moveHero(3)) {
+			cout << "* You entered the next room. \n";
+			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			monsterDetection();
+		}
+		else {
+			cout << "You can't go that way! Go to another direction: [ !north - !east - !south ] \n";
+		}
 	}
 	else if (input == "!inventory") {
 		cout << inventory.getItems();
@@ -78,6 +94,7 @@ void InputController::CheckInput() {
 
 	// Errors
 	else { cout << "* No command found." << endl; }
+	cout << "\n";
 }
 
 void InputController::monsterDetection() {

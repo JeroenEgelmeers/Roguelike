@@ -41,7 +41,7 @@ class Hero
 
 		// Methods
 		void	getHeroStats();
-		void	moveHero(int direction);
+		bool	moveHero(int direction);
 	
 	protected:
 		Hero();
