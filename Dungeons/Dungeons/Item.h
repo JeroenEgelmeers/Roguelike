@@ -13,12 +13,15 @@ public:
 	string	getDescription()		{ return itemDescription; }
 	string  getItemString();
 
+	void	generateItem();
+
+	bool	operator==(const Item& other);
+
 private:
 	int		itemId;
 	string	itemName;
 	string	itemDescription;
 
-	void	generateItem();
 	void	generateItem(int itemId);
 	void	gameItems(int id);
 
