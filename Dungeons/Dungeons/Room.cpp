@@ -21,12 +21,17 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 
 Item* Room::GetItem()
 {
-	return item;
+	if (item != nullptr) {
+		return item;
+	}
+	else {
+		return nullptr;
+	}
 }
 
 void Room::RemoveItem()
 {
-	;
+	item = nullptr;
 }
 
 void Room::CreateNeighbours(int x, int y)

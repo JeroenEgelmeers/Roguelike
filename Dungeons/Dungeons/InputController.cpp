@@ -23,7 +23,8 @@ void InputController::CheckInput() {
 		cout << "* You can use one of the following commands: \n"
 			<< "[[ Move to direction:\t !north - !east - !south - !west ]] \n"
 			<< "[[ Player information:\t !stats - !inventory ]] \n"
-			<< "[[ Game information:\t !map ]] \n"
+			<< "[[ Game information:\t !map - !attack ]] \n"
+			<< "[[ Game options:\t !quit ]] \n"
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
@@ -38,6 +39,7 @@ void InputController::CheckInput() {
 		if (Hero::Instance()->moveHero(0)) {
 			cout << "* You entered the next room. \n";
 			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			itemDetection();
 			monsterDetection();
 		}
 		else {
@@ -49,6 +51,7 @@ void InputController::CheckInput() {
 		if (Hero::Instance()->moveHero(1)) {
 			cout << "* You entered the next room. \n";
 			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			itemDetection();
 			monsterDetection();
 		}
 		else {
@@ -60,6 +63,7 @@ void InputController::CheckInput() {
 		if (Hero::Instance()->moveHero(2)) {
 			cout << "* You entered the next room. \n";
 			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			itemDetection();
 			monsterDetection();
 		}
 		else {
@@ -71,20 +75,28 @@ void InputController::CheckInput() {
 		if (Hero::Instance()->moveHero(3)) {
 			cout << "* You entered the next room. \n";
 			cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+			itemDetection();
 			monsterDetection();
 		}
 		else {
 			cout << "You can't go that way! Go to another direction: [ !north - !east - !south ] \n";
 		}
 	}
+	else if (input == "!attack") {
+		// Attack monster
+	}
 	else if (input == "!inventory") {
 		cout << inventory.getItems();
 	}
 	else if (input == "!getitem") {
-		cout << "This function is not yet implemented! \n";
-		//inventory.addItem(item);
-	
-		// cout << "You did just pick + item.getItemName";
+		if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
+			//inventory.addItem(Hero::Instance()->getRoom()->GetItem()); // TODO!!!!
+			Hero::Instance()->getRoom()->RemoveItem();
+			cout << "Item added to your inventory! \n";
+		}
+		else {
+			cout << "There is no item in this room!";
+		}
 	}
 	// System commands
 	else if (input == "!quit")		{ quitGame(); }
@@ -97,10 +109,16 @@ void InputController::CheckInput() {
 	cout << "\n";
 }
 
+void InputController::itemDetection() {
+	if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
+		cout << "THERE IS AN ITEM IN THIS ROOM! \n";
+	}
+}
+
 void InputController::monsterDetection() {
 	if (Hero::Instance()->getRoom()->GetMonster() != nullptr)
 	{
-		cout << "/!\\ Watch out! There is a something in this room!\n";
+		cout << "/!\\ WATCH OUT! There is a something in this room!\n";
 		Hero::Instance()->getRoom()->GetMonster()->getMonsterStats();
 	}
 }
