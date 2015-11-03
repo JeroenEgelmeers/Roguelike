@@ -24,6 +24,8 @@ public:
 	Hero*		player;
 	void		setSpecialDescription(int id);
 	bool		MovePlayer(int direction);
+	Item		GetItem();
+	void		RemoveItem();
 private:
 	string		generateRoomType(int type);
 	Item		item;

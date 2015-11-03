@@ -16,6 +16,16 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 	}	
 }
 
+Item Room::GetItem()
+{
+	return item;
+}
+
+void Room::RemoveItem()
+{
+	;
+}
+
 void Room::CreateNeighbours(int x, int y)
 {
 	if (x > 0)
