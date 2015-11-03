@@ -20,6 +20,10 @@ void Item::setItem(int id) {
 	gameItems(id);
 }
 
+bool Item::operator==(const Item& other) {
+	return itemId == other.itemId && itemName == other.itemName && itemDescription == other.itemDescription;
+}
+
 void Item::useItem() { /* We do not implement this */ }
 
 string Item::getItemName() { return itemName; }

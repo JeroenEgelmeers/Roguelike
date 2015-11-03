@@ -31,5 +31,6 @@ string Inventory::getItems()
 	{
 		description += i.getItemName() + " [" +  i.getDescription() + " ]";
 	}
+	if (description == "") { description = "You don't have any items in your inventory!\n"; }
 	return description;
 }

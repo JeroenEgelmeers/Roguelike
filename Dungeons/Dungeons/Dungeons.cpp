@@ -29,13 +29,14 @@ int _tmain(int argc, _TCHAR* argv[])
 	cin.clear();
 	Hero::Instance()->getHeroStats();
 	cout << "* To enter the first room, type: !enterDungeon \n";
-	cin >> currentAction;
-	if (currentAction == "!enterDungeon") {
-		system("CLS");
-		cout << "* You entered the first room. \n";
-		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
-		Game::Instance().setGameLoop(true);
+	while (currentAction != "!enterDungeon") {
+		cin >> currentAction;
+		cout << "If you're ready press: !enterDungeon\n";
 	}
+	system("CLS");
+	cout << "* You entered the first room. \n";
+	cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+	Game::Instance().setGameLoop(true);
 
 	while (Game::Instance().getGameLoopStatus()) {
 		InputController::Instance().CheckInput();

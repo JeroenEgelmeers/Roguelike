@@ -18,14 +18,14 @@ void InputController::CheckInput() {
 
 	// Input to lowercase
 	transform(input.begin(), input.end(), input.begin(), ::tolower);
-	
+
 	// All commands
-	if (input == "!help") { 
+	if (input == "!help") {
 		// Normal help command
 		cout << "* You can use one of the following commands: \n"
-			<< "[[ Move to direction: !north - !east - !south - !west ]] \n"
-			<< "[[ Player information: !stats ]] \n"
-			<< "[[ Game information: !map ]] \n"
+			<< "[[ Move to direction:\t !north - !east - !south - !west ]] \n"
+			<< "[[ Player information:\t !stats - !inventory ]] \n"
+			<< "[[ Game information:\t !map ]] \n"
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
@@ -35,31 +35,39 @@ void InputController::CheckInput() {
 	else if (input == "!map") { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north")		
-	{ 
-		Hero::Instance()->moveHero(0); 
+	else if (input == "!north")
+	{
+		Hero::Instance()->moveHero(0);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
 	}
-	else if (input == "!east")		
-	{ 
+	else if (input == "!east")
+	{
 		Hero::Instance()->moveHero(1);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
 	}
-	else if (input == "!south")		
-	{ 
-		Hero::Instance()->moveHero(2); 
+	else if (input == "!south")
+	{
+		Hero::Instance()->moveHero(2);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
 	}
-	else if (input == "!west")		
-	{ 
-		Hero::Instance()->moveHero(3); 
+	else if (input == "!west")
+	{
+		Hero::Instance()->moveHero(3);
 		cout << "* You entered the next room. \n";
 		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
 	}
-
+	else if (input == "!inventory") {
+		cout << inventory.getItems();
+	}
+	else if (input == "!getitem") {
+		cout << "This function is not yet implemented! \n";
+		// inventory.addItem(item);
+	
+		// cout << "You did just pick + item.getItemName";
+	}
 	// System commands
 	else if (input == "!quit")		{ quitGame(); }
 	
