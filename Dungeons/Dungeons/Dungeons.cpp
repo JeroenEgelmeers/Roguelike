@@ -33,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 	if (currentAction == "!enterDungeon") {
 		system("CLS");
 		cout << "* You entered the first room. \n";
-		cout << "* Room description: TODO \n";
+		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
 		Game::Instance().setGameLoop(true);
 	}
 

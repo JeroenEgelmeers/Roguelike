@@ -66,6 +66,11 @@ bool Hero::setUserName(string inputUserName) {
 	}
 }
 
+string Hero::getRoomDescription()
+{
+	return curroom->GetDescription();
+}
+
 void Hero::setRoom(Room* room)
 {
 	curroom = room;

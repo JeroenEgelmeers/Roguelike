@@ -6,6 +6,7 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 {
 	description = "Geen Beschrijving";
 	symbol = 'N';
+	generateRoomDescription();
 }
 
 void Room::CreateNeighbours(int x, int y)
@@ -23,25 +24,57 @@ void Room::CreateNeighbours(int x, int y)
 }
 
 void Room::generateRoomDescription() {
-	string description = "Description: A ";
+	string description = "\n A ";
 	
-	string roomDescriptions_0[6]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty"};
+	string roomDescriptions_0[7]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy"};
 	string roomDescriptions_1[9] { "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room"};
-	string roomDescriptions_2[5] { "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skaleton", "with in the middle an computer" };
+	string roomDescriptions_2[5] { "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skeleton", "with in the middle an computer" };
 	string roomDescriptions_3[13]{ "a skeleton", "a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
 
-	int getDescription = rand() % 7;
+	int getDescription = Globals::Random(7);
 	description += roomDescriptions_0[getDescription];
 
-	getDescription = rand() % 10; // 0-5
+	getDescription = Globals::Random(9); // 0-5
 	description += " " + roomDescriptions_1[getDescription];
 
-	getDescription = rand() % 6;
+	getDescription = Globals::Random(5);
 	description += " " + roomDescriptions_2[getDescription];
 
 	if (getDescription > 0) {
-		getDescription = rand() % 14;
-		description += "and in the corner " + roomDescriptions_3[getDescription];
+		getDescription = Globals::Random(13);
+		description += " and in the corner " + roomDescriptions_3[getDescription];
+	}
+	description += "\n";
+
+	this->description = description;
+
+	if (this->description == "")
+	{
+		this->description = "\n An anomalys room lacking a clear description \n";
+	}
+}
+
+void Room::setSpecialDescription(int id)
+{
+	string roomDescriptions_0[]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy"};
+	int getDescription;
+	switch (id)
+	{
+	case 0:
+		description = "\n A ";
+		getDescription = Globals::Random(7);
+		description += roomDescriptions_0[getDescription];
+		description += " stairway from where you entered the floor\n";
+		break;
+	case 1:
+		description = "\n A ";
+		getDescription = Globals::Random(7);
+		description += roomDescriptions_0[getDescription];
+		description += " stairway down to the next floor\n";
+		break;
+	default:
+		description = "\n An anomalys room lacking a clear description \n";
+		break;
 	}
 }
 
@@ -80,6 +113,7 @@ string Room::generateRoomType(int type) {
 
 	return returnString;
 }
+
 
 void Room::setRoomType(int type) {
 	roomType = generateRoomType(type);

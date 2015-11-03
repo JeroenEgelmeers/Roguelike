@@ -25,7 +25,7 @@ class Hero
 		const int		getAttack()		{ return attack;	}
 		const int		getStrength()	{ return strength;	}
 		const int		getDefence()	{ return defence;	}
-		const Room*		getRoom()		{ return curroom;   }
+		Room*			getRoom()		{ return curroom;   }
 
 		// Setters
 		void	increaseLevel(int value);
@@ -37,6 +37,7 @@ class Hero
 		void	increaseDefence(int value);
 		bool	setUserName(string inputUserName);
 		void	setRoom(Room* room);
+		string	getRoomDescription();
 
 		// Methods
 		void	getHeroStats();

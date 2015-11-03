@@ -35,10 +35,30 @@ void InputController::CheckInput() {
 	else if (input == "!map") { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north")		{ Hero::Instance()->moveHero(0); }
-	else if (input == "!east")		{ Hero::Instance()->moveHero(1); }
-	else if (input == "!south")		{ Hero::Instance()->moveHero(2); }
-	else if (input == "!west")		{ Hero::Instance()->moveHero(3); }
+	else if (input == "!north")		
+	{ 
+		Hero::Instance()->moveHero(0); 
+		cout << "* You entered the next room. \n";
+		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+	}
+	else if (input == "!east")		
+	{ 
+		Hero::Instance()->moveHero(1);
+		cout << "* You entered the next room. \n";
+		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+	}
+	else if (input == "!south")		
+	{ 
+		Hero::Instance()->moveHero(2); 
+		cout << "* You entered the next room. \n";
+		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+	}
+	else if (input == "!west")		
+	{ 
+		Hero::Instance()->moveHero(3); 
+		cout << "* You entered the next room. \n";
+		cout << "* Room description: " + Hero::Instance()->getRoomDescription();
+	}
 
 	// System commands
 	else if (input == "!quit")		{ quitGame(); }

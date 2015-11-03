@@ -37,6 +37,9 @@ Level::Level(int x, int y)
 
 	startpoint->SetSymbol('S');
 	stairway->SetSymbol('T');
+	startpoint->setSpecialDescription(0);
+	stairway->setSpecialDescription(1);
+
 	startpoint->player = Hero::Instance();
 
 	if (startpoint != nullptr)
