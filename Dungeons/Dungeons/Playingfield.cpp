@@ -16,7 +16,7 @@ void Playingfield::Drawfield()
 }
 
 void Playingfield::getLegenda() {
-	cout << "[[ Legenda: N = Normal room || P = Your location || T = Stairway Down || S = Startpoint/Stairway Up || -| = Hallway ]] \n";
+	cout << "[[ Legenda: N = Normal room || P = Your location || H = Healing room || T = Stairway Down || S = Startpoint/Stairway Up || -| = Hallway ]] \n";
 }
 
 void Playingfield::Generate()
@@ -60,16 +60,24 @@ void Playingfield::switchLevel(int level)
 
 void Playingfield::goLevelUp()
 {
-	curlevel++;
-	if (curlevel < lsize)
-		levels[curlevel]->SetPlayer();
+	if (curlevel+1 < lsize)
+	{
+		levels[curlevel + 1]->SetPlayer();
+		curlevel++;
+	}
+	else
+		cout << "YOU WIN!";
 }
 
 void Playingfield::goLevelDown()
 {
-	curlevel--;
 	if (curlevel > 0)
-		levels[curlevel]->ReturnPlayer();
+	{
+		levels[curlevel - 1]->ReturnPlayer();
+		curlevel--;
+	}
+	else
+		cout << "You can't go back the way you came";
 }
 
 Playingfield::~Playingfield()

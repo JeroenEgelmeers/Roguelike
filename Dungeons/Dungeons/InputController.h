@@ -20,6 +20,8 @@ public:
 private:
 	void quitGame();
 	void monsterDetection();
+	void itemDetection();
+	void attackMonster();
 
 	Playingfield* pf;
 	Inventory inventory;

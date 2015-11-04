@@ -29,7 +29,7 @@ class Hero
 		const bool		getStairway()	{ return isonstairway; }
 
 		// Setters
-		void	increaseLevel(int value);
+		void	increaseLevel();
 		void	removeHealth(int value);
 		void	addHealth(int value);
 		void	increaseXp(int value);
@@ -40,10 +40,13 @@ class Hero
 		void	setRoom(Room* room);
 		void	setStairway(bool ios);
 		string	getRoomDescription();
+		bool	healHero();
 
 		// Methods
 		void	getHeroStats();
+		void	getHeroStatsFight();
 		bool	moveHero(int direction);
+		bool	gameOver;
 	
 	protected:
 		Hero();
@@ -55,6 +58,7 @@ class Hero
 		bool	isonstairway;
 		int		level;
 		int		health;
+		int		maxHealth;
 		float	xp;
 		int		attack;
 		int		strength;
