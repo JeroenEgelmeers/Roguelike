@@ -41,7 +41,7 @@ void Hero::removeHealth(int value)
 	health -= value;
 	if (health <= 0) {
 		gameOver = true;
-		cout << "GAME OVER!!! \n";
+		cout << "\n\nGAME OVER!!! \n\n";
 	}
 }
 
@@ -146,8 +146,6 @@ bool Hero::moveHero(int direction)
 		curroom->removeTrap();
 
 		cout << "A trap collapsed! You lost " << trapRandom << " HP! \n";
-		cout << "You was not able to move. The trap has been collapsed so you can now move on! \n";
-
 		return false;
 	}
 	else {

@@ -30,7 +30,7 @@ string Inventory::getItems()
 
 	for (Item* i : items)
 	{
-		description += i->getItemName() + " [" +  i->getDescription() + " ]";
+		description += i->getItemName() + " [" +  i->getDescription() + " ] \n";
 	}
 	if (description == "") { description = "You don't have any items in your inventory!\n"; }
 	return description;
