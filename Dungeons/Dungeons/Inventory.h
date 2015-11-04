@@ -7,10 +7,10 @@ public:
 	Inventory();
 	~Inventory();
 
-	void addItem(Item item);
-	bool removeItem(Item item);
+	void addItem(Item* item);
+	bool removeItem(Item* item);
 	string getItems();
 
 private:
-	vector<Item> items;
+	vector<Item*> items;
 };

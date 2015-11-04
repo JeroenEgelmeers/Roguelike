@@ -6,13 +6,13 @@ using namespace std;
 Inventory::Inventory() {}
 Inventory::~Inventory() {}
 
-void Inventory::addItem(Item item)
+void Inventory::addItem(Item* item)
 {
 	// if (items.size() < 8) { } // Could be implemented to make sure players can only get 8? items.
 	items.push_back(item);
 }
 
-bool Inventory::removeItem(Item item)
+bool Inventory::removeItem(Item* item)
 {
 	bool itemRemoved = false;
 	auto iter = find(items.begin(), items.end(), item);
@@ -27,9 +27,10 @@ bool Inventory::removeItem(Item item)
 string Inventory::getItems()
 {
 	string description = "";
-	for (Item& i : items)
+
+	for (Item* i : items)
 	{
-		description += i.getItemName() + " [" +  i.getDescription() + " ]";
+		description += i->getItemName() + " [" +  i->getDescription() + " ]";
 	}
 	if (description == "") { description = "You don't have any items in your inventory!\n"; }
 	return description;

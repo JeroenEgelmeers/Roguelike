@@ -97,7 +97,7 @@ void InputController::CheckInput() {
 	}
 	else if (input == "!getitem" && !Hero::Instance()->gameOver) {
 		if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
-			//inventory.addItem(Hero::Instance()->getRoom()->GetItem());
+			inventory.addItem(Hero::Instance()->getRoom()->GetItem());
 			Hero::Instance()->getRoom()->RemoveItem();
 			cout << "Item added to your inventory! \n";
 		}
