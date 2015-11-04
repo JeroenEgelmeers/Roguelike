@@ -25,16 +25,24 @@ public:
 	Hero*		player;
 	void		setSpecialDescription(int id);
 	bool		MovePlayer(int direction);
+	bool		healer;
+	bool		getTrap();
+	int		getTrapKind();
+	void		removeTrap();
 	Item*		GetItem();
-	void		RemoveItem();
+	void		RemoveItem();	
+
 private:
 	string		generateRoomType(int type);
 	Item*		item;
 	Monster*	monster;
 	string		description;
 	string		 roomType;
+	bool		hasTrap;
+	int			trapLevel;
 	unsigned char roomSymbol;
 	void		generateRoomDescription();
 	void		generateMonster();
+	void		generateTrap();
 };
 

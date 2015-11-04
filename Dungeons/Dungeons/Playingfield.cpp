@@ -16,7 +16,7 @@ void Playingfield::Drawfield()
 }
 
 void Playingfield::getLegenda() {
-	cout << "[[ Legenda: N = Normal room || P = Your location || T = Stairway Down || S = Startpoint/Stairway Up || -| = Hallway ]] \n";
+	cout << "[[ Legenda: N = Normal room || P = Your location || H = Healing room || T = Stairway Down || S = Startpoint/Stairway Up || -| = Hallway ]] \n";
 }
 
 void Playingfield::Generate()

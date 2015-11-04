@@ -23,7 +23,7 @@ void InputController::CheckInput() {
 		cout << "* You can use one of the following commands: \n"
 			<< "[[ Move to direction:\t !north - !east - !south - !west ]] \n"
 			<< "[[ Player information:\t !stats - !inventory ]] \n"
-			<< "[[ Game information:\t !map - !attack ]] \n"
+			<< "[[ Game information:\t !map - !attack - !heal ]] \n"
 			<< "[[ Game options:\t !quit ]] \n"
 			<< "* end of commandlist. \n";
 	}
@@ -90,17 +90,43 @@ void InputController::CheckInput() {
 			cout << "You're doing some amazing tricks with your sword, but hitting anything.. Nope! There is nothing in here!";
 		}
 	}
+	// INVENTORY 
 	else if (input == "!inventory" && !Hero::Instance()->gameOver) {
 		cout << inventory.getItems();
 	}
 	else if (input == "!getitem" && !Hero::Instance()->gameOver) {
 		if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
-			//inventory.addItem(Hero::Instance()->getRoom()->GetItem()); // TODO!!!!
+			//inventory.addItem(Hero::Instance()->getRoom()->GetItem());
 			Hero::Instance()->getRoom()->RemoveItem();
 			cout << "Item added to your inventory! \n";
 		}
 		else {
 			cout << "There is no item in this room!";
+		}
+	}
+	//
+	else if (input == "!disarm" && !Hero::Instance()->gameOver) {
+		if (Hero::Instance()->getRoom()->getTrap()) {
+			Hero::Instance()->getRoom()->removeTrap();
+			cout << "Well done! You just disarmed a trap in this room.";
+		}
+		else {
+			cout << "No traps in here! You're safe!";
+		}
+	}
+
+	// HEALING
+	else if (input == "!heal" && !Hero::Instance()->gameOver) {
+		if (Hero::Instance()->getRoom()->healer) {
+			if (Hero::Instance()->healHero()) {
+				cout << "You just healed yourself at a magic stone!!";
+			}
+			else {
+				cout << "You're already full health!";
+			}
+		}
+		else {
+			cout << "There is no healer in this room. You can find descovered healing points in your map defined with \"H\"!";
 		}
 	}
 	// System commands
@@ -117,18 +143,26 @@ void InputController::CheckInput() {
 }
 
 void InputController::attackMonster() {
-	int playerHit = rand() % (Hero::Instance()->getAttack() + Hero::Instance()->getStrength() + 1 - Hero::Instance()->getRoom()->GetMonster()->getDefence());
+	int hit = (Hero::Instance()->getAttack() + Hero::Instance()->getStrength() + 1 - Hero::Instance()->getRoom()->GetMonster()->getDefence());
+	int playerHit = 0;
+	if (hit > 0) {
+		playerHit = rand() % hit;
+	}
 	Hero::Instance()->getRoom()->GetMonster()->removeHealth(playerHit);
 	cout << "You used your sword and hit: " << playerHit << "! \n";
 	if (Hero::Instance()->getRoom()->GetMonster()->getHealth() <= 0) {
 		cout << "Awesome! You just killed the " << Hero::Instance()->getRoom()->GetMonster()->getMonsterName() << "! \n";
 		Hero::Instance()->increaseXp((Hero::Instance()->getRoom()->GetMonster()->getLevel() * 7));
-		Hero::Instance()->addHealth(Hero::Instance()->getRoom()->GetMonster()->getLevel());
 		Hero::Instance()->getRoom()->RemoveMonster();
 	}
 	else {
 		Hero::Instance()->getRoom()->GetMonster()->getMonsterStats();
-		int monsterHit = rand() % (Hero::Instance()->getRoom()->GetMonster()->getAttack() + Hero::Instance()->getRoom()->GetMonster()->getStrength() - Hero::Instance()->getDefence());
+		hit = (Hero::Instance()->getRoom()->GetMonster()->getAttack() + Hero::Instance()->getRoom()->GetMonster()->getStrength() - Hero::Instance()->getDefence());
+		int monsterHit = 0;
+		if (hit > 0) {
+			monsterHit = rand() % hit;
+		}
+		
 		cout << "The " << Hero::Instance()->getRoom()->GetMonster()->getMonsterName() << " hits " << monsterHit << "! \n";
 		Hero::Instance()->removeHealth(monsterHit);
 		if (Hero::Instance()->getHealth() > 0) {

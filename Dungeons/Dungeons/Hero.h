@@ -38,6 +38,7 @@ class Hero
 		bool	setUserName(string inputUserName);
 		void	setRoom(Room* room);
 		string	getRoomDescription();
+		bool	healHero();
 
 		// Methods
 		void	getHeroStats();
@@ -54,6 +55,7 @@ class Hero
 		Room*	curroom;
 		int		level;
 		int		health;
+		int		maxHealth;
 		float	xp;
 		int		attack;
 		int		strength;

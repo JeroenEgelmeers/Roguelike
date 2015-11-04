@@ -5,7 +5,19 @@
 Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 {
 	description = "Geen Beschrijving";
-	symbol = 'N';
+	int healerRandom = rand() % 5;
+	if (healerRandom == 1) {
+		healer = true; generateRoomType(6);
+	}
+	else { healer = false;  generateRoomType(0); }
+
+	int trapRandom = rand() % 8;
+	if (trapRandom == 1) {
+		hasTrap = true;
+		generateTrap();
+	}
+	else { hasTrap = false; }
+
 	generateRoomDescription();
 	generateMonster();
 	if (Globals::itemlist.size() >= 1)
@@ -16,7 +28,25 @@ Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 			item->generateItem(Globals::itemlist.back());
 		}
 		Globals::itemlist.pop_back();
-	}	
+	}
+}
+
+void Room::removeTrap() {
+	hasTrap = false;
+}
+
+int Room::getTrapKind() {
+	return trapLevel;
+}
+
+void Room::generateTrap() {
+	int trapRandom = rand() % 7 + 1;
+	trapLevel = trapRandom;
+}
+
+bool Room::getTrap()
+{
+	return hasTrap;
 }
 
 Item* Room::GetItem()
@@ -58,7 +88,7 @@ void Room::generateRoomDescription() {
 	string roomDescriptions_0[7]{ "clean", "dirty", "scary", "bloody", "smelly", "dusty", "fancy" };
 	string roomDescriptions_1[9]{ "big room", "normal room", "small room", "living room", "kitchen", "bathroom", "bedroom", "work room", "games room" };
 	string roomDescriptions_2[5]{ "with nothing in it.", "with in the middle a table", "with in the middle a lamp", "with in the middle a skeleton", "with in the middle an computer" };
-	string roomDescriptions_3[13]{ "a skeleton", "a basket", " a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
+	string roomDescriptions_3[13]{ "a skeleton", "a basket", "a chest", "a bar", "a wheel", "a bureau", "a globe", "a phone", "a bed", "a painting", "a shelf", "some shoes", "some broken glass" };
 
 	int getDescription = Globals::Random(7);
 	description += roomDescriptions_0[getDescription];
@@ -113,27 +143,31 @@ string Room::generateRoomType(int type) {
 	{
 	case 0:
 		returnString	= "Normal room";
-		roomSymbol		= 'N';
+		symbol = 'N';
 		break;
 	case 1:
 		returnString	= "Pitfall";
-		roomSymbol		= 'X';
+		symbol = 'X';
 		break;
 	case 2:
 		returnString	= "Stairs Down";
-		roomSymbol		= 'v';
+		symbol = 'v';
 		break;
 	case 3:
 		returnString	= "Stairs Up";
-		roomSymbol		= '^';
+		symbol = '^';
 		break;
 	case 4:
 		returnString	= "Enemy room";
-		roomSymbol		= 'E';
+		symbol = 'E';
 		break;
 	case 5:
 		returnString	= "Boss room";
-		roomSymbol		= 'B';
+		symbol = 'B';
+		break;
+	case 6:
+		returnString = "Heal room";
+		symbol = 'H';
 		break;
 	default:
 		// This should NEVER been used.

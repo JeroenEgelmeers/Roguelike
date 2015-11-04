@@ -5,6 +5,7 @@ Hero::Hero() {
 	// Set stats
 	level		= 3;
 	health		= 10;
+	maxHealth	= 10;
 	xp			= 0;
 	attack		= 2;
 	strength	= 2;
@@ -19,8 +20,19 @@ void Hero::increaseLevel()
 	attack++;
 	strength++;
 	defence++;
+	maxHealth = (maxHealth + 2);
 
 	cout << "Congratulations! You just increased in combat! You're now level " << level;
+}
+
+bool Hero::healHero() {
+	if (health < maxHealth) {
+		health = maxHealth;
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 void Hero::removeHealth(int value)
@@ -34,6 +46,7 @@ void Hero::removeHealth(int value)
 
 void Hero::addHealth(int value) {
 	health += value;
+	if (maxHealth < health) { health = maxHealth; }
 }
 
 void Hero::increaseXp(int value)
@@ -125,7 +138,20 @@ void Hero::setRoom(Room* room)
 
 bool Hero::moveHero(int direction)
 {
-	return curroom->MovePlayer(direction);
+	if (curroom->getTrap()) {
+		int trapRandom = rand() % curroom->getTrapKind() - getDefence();
+		if (trapRandom <= 0) { trapRandom = 1; }
+		removeHealth(trapRandom);
+		curroom->removeTrap();
+
+		cout << "A trap collapsed! You lost " << trapRandom << " HP! \n";
+		cout << "You was not able to move. The trap has been collapsed so you can now move on! \n";
+
+		return false;
+	}
+	else {
+		return curroom->MovePlayer(direction);
+	}
 }
 
 
