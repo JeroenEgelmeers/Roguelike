@@ -21,6 +21,7 @@ public:
 	Room*		GetRoom(int x, int y);
 	string		GetDescription();
 	Monster*	GetMonster();
+	void		RemoveMonster();
 	Hero*		player;
 	void		setSpecialDescription(int id);
 	bool		MovePlayer(int direction);

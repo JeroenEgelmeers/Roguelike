@@ -10,7 +10,7 @@ void Monster::addHealth(int value) { health += value; }
 
 void Monster::getMonsterStats()
 {
-	cout << "[[ " << monsterName << " has level: " << getLevel() << " || "
+	cout << "[[ " << monsterName << " - level: " << getLevel() << " || "
 		<< "Health: " << getHealth() << " HP || "
 		<< "Attack: " << getAttack() << " || "
 		<< "Strength: " << getStrength() << " || "

@@ -28,7 +28,7 @@ class Hero
 		Room*			getRoom()		{ return curroom;   }
 
 		// Setters
-		void	increaseLevel(int value);
+		void	increaseLevel();
 		void	removeHealth(int value);
 		void	addHealth(int value);
 		void	increaseXp(int value);
@@ -41,7 +41,9 @@ class Hero
 
 		// Methods
 		void	getHeroStats();
+		void	getHeroStatsFight();
 		bool	moveHero(int direction);
+		bool	gameOver;
 	
 	protected:
 		Hero();

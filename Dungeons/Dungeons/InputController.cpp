@@ -28,13 +28,13 @@ void InputController::CheckInput() {
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
-	else if (input == "!stats") { Hero::Instance()->getHeroStats(); }
+	else if (input == "!stats" && !Hero::Instance()->gameOver) { Hero::Instance()->getHeroStats(); }
 
 	// Game commands
-	else if (input == "!map") { pf->Drawfield(); }
+	else if (input == "!map" && !Hero::Instance()->gameOver) { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north")
+	else if (input == "!north" && !Hero::Instance()->gameOver)
 	{	
 		if (Hero::Instance()->moveHero(0)) {
 			cout << "* You entered the next room. \n";
@@ -46,7 +46,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !east - !south - !west ] \n";
 		}
 	}
-	else if (input == "!east")
+	else if (input == "!east" && !Hero::Instance()->gameOver)
 	{
 		if (Hero::Instance()->moveHero(1)) {
 			cout << "* You entered the next room. \n";
@@ -58,7 +58,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !north - !south - !west ] \n";
 		}
 	}
-	else if (input == "!south")
+	else if (input == "!south" && !Hero::Instance()->gameOver)
 	{
 		if (Hero::Instance()->moveHero(2)) {
 			cout << "* You entered the next room. \n";
@@ -70,7 +70,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !north - !east - !west ] \n";
 		}
 	}
-	else if (input == "!west")
+	else if (input == "!west" && !Hero::Instance()->gameOver)
 	{
 		if (Hero::Instance()->moveHero(3)) {
 			cout << "* You entered the next room. \n";
@@ -82,13 +82,18 @@ void InputController::CheckInput() {
 			cout << "You can't go that way! Go to another direction: [ !north - !east - !south ] \n";
 		}
 	}
-	else if (input == "!attack") {
-		// Attack monster
+	else if (input == "!attack" && !Hero::Instance()->gameOver) {
+		if (Hero::Instance()->getRoom()->GetMonster() != nullptr) {
+			attackMonster();
+		}
+		else {
+			cout << "You're doing some amazing tricks with your sword, but hitting anything.. Nope! There is nothing in here!";
+		}
 	}
-	else if (input == "!inventory") {
+	else if (input == "!inventory" && !Hero::Instance()->gameOver) {
 		cout << inventory.getItems();
 	}
-	else if (input == "!getitem") {
+	else if (input == "!getitem" && !Hero::Instance()->gameOver) {
 		if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
 			//inventory.addItem(Hero::Instance()->getRoom()->GetItem()); // TODO!!!!
 			Hero::Instance()->getRoom()->RemoveItem();
@@ -104,9 +109,32 @@ void InputController::CheckInput() {
 	// Cheat functions.
 	else if (input == "@heal")		{ Hero::Instance()->addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
 
+	else if (Hero::Instance()->gameOver) { cout << "You lost. Please press: !quit and restart the game!"; }
 	// Errors
 	else { cout << "* No command found." << endl; }
+
 	cout << "\n";
+}
+
+void InputController::attackMonster() {
+	int playerHit = rand() % (Hero::Instance()->getAttack() + Hero::Instance()->getStrength() + 1 - Hero::Instance()->getRoom()->GetMonster()->getDefence());
+	Hero::Instance()->getRoom()->GetMonster()->removeHealth(playerHit);
+	cout << "You used your sword and hit: " << playerHit << "! \n";
+	if (Hero::Instance()->getRoom()->GetMonster()->getHealth() <= 0) {
+		cout << "Awesome! You just killed the " << Hero::Instance()->getRoom()->GetMonster()->getMonsterName() << "! \n";
+		Hero::Instance()->increaseXp((Hero::Instance()->getRoom()->GetMonster()->getLevel() * 7));
+		Hero::Instance()->addHealth(Hero::Instance()->getRoom()->GetMonster()->getLevel());
+		Hero::Instance()->getRoom()->RemoveMonster();
+	}
+	else {
+		Hero::Instance()->getRoom()->GetMonster()->getMonsterStats();
+		int monsterHit = rand() % (Hero::Instance()->getRoom()->GetMonster()->getAttack() + Hero::Instance()->getRoom()->GetMonster()->getStrength() - Hero::Instance()->getDefence());
+		cout << "The " << Hero::Instance()->getRoom()->GetMonster()->getMonsterName() << " hits " << monsterHit << "! \n";
+		Hero::Instance()->removeHealth(monsterHit);
+		if (Hero::Instance()->getHealth() > 0) {
+			Hero::Instance()->getHeroStatsFight();
+		}
+	}
 }
 
 void InputController::itemDetection() {

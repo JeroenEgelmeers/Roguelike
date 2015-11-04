@@ -29,6 +29,10 @@ Item* Room::GetItem()
 	}
 }
 
+void Room::RemoveMonster() {
+	monster = nullptr;
+}
+
 void Room::RemoveItem()
 {
 	item = nullptr;
