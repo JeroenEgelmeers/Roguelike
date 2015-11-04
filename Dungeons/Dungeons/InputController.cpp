@@ -29,13 +29,13 @@ void InputController::CheckInput() {
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
-	else if (input == "!stats" && !Hero::Instance()->gameOver) { Hero::Instance()->getHeroStats(); }
+	else if (input == "!stats" && Hero::Instance()->gamePlaying()) { Hero::Instance()->getHeroStats(); }
 
 	// Game commands
-	else if (input == "!map" && !Hero::Instance()->gameOver) { pf->Drawfield(); }
+	else if (input == "!map" && Hero::Instance()->gamePlaying()) { pf->Drawfield(); }
 
 	// Direction commands
-	else if (input == "!north" && !Hero::Instance()->gameOver)
+	else if (input == "!north" && Hero::Instance()->gamePlaying())
 	{	
 		if (Hero::Instance()->moveHero(0)) {
 			cout << "* You entered the next room. \n";
@@ -47,7 +47,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !east - !south - !west ] \n";
 		}
 	}
-	else if (input == "!east" && !Hero::Instance()->gameOver)
+	else if (input == "!east" && Hero::Instance()->gamePlaying())
 	{
 		if (Hero::Instance()->moveHero(1)) {
 			cout << "* You entered the next room. \n";
@@ -59,7 +59,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !north - !south - !west ] \n";
 		}
 	}
-	else if (input == "!south" && !Hero::Instance()->gameOver)
+	else if (input == "!south" && Hero::Instance()->gamePlaying())
 	{
 		if (Hero::Instance()->moveHero(2)) {
 			cout << "* You entered the next room. \n";
@@ -71,7 +71,7 @@ void InputController::CheckInput() {
 			cout << "[!] You can't go that way! Go to another direction: [ !north - !east - !west ] \n";
 		}
 	}
-	else if (input == "!west" && !Hero::Instance()->gameOver)
+	else if (input == "!west" && Hero::Instance()->gamePlaying())
 	{
 		if (Hero::Instance()->moveHero(3)) {
 			cout << "* You entered the next room. \n";
@@ -83,7 +83,7 @@ void InputController::CheckInput() {
 			cout << "You can't go that way! Go to another direction: [ !north - !east - !south ] \n";
 		}
 	}
-	else if (input == "!attack" && !Hero::Instance()->gameOver) {
+	else if (input == "!attack" && Hero::Instance()->gamePlaying()) {
 		if (Hero::Instance()->getRoom()->GetMonster() != nullptr) {
 			attackMonster();
 		}
@@ -92,10 +92,10 @@ void InputController::CheckInput() {
 		}
 	}
 	// INVENTORY 
-	else if (input == "!inventory" && !Hero::Instance()->gameOver) {
+	else if (input == "!inventory" && Hero::Instance()->gamePlaying()) {
 		cout << inventory.getItems();
 	}
-	else if (input == "!getitem" && !Hero::Instance()->gameOver) {
+	else if (input == "!getitem" && Hero::Instance()->gamePlaying()) {
 		if (Hero::Instance()->getRoom()->GetItem() != nullptr) {
 			inventory.addItem(Hero::Instance()->getRoom()->GetItem());
 			Hero::Instance()->getRoom()->RemoveItem();
@@ -106,7 +106,7 @@ void InputController::CheckInput() {
 		}
 	}
 	//
-	else if (input == "!disarm" && !Hero::Instance()->gameOver) {
+	else if (input == "!disarm" && Hero::Instance()->gamePlaying()) {
 		if (Hero::Instance()->getRoom()->getTrap()) {
 			Hero::Instance()->getRoom()->removeTrap();
 			cout << "Well done! You just disarmed a trap in this room.";
@@ -117,7 +117,7 @@ void InputController::CheckInput() {
 	}
 
 	// HEALING
-	else if (input == "!heal" && !Hero::Instance()->gameOver) {
+	else if (input == "!heal" && Hero::Instance()->gamePlaying()) {
 		if (Hero::Instance()->getRoom()->healer) {
 			if (Hero::Instance()->healHero()) {
 				cout << "You just healed yourself at a magic stone!!";
@@ -159,6 +159,7 @@ void InputController::CheckInput() {
 	else if (input == "@heal")		{ Hero::Instance()->addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }
 
 	else if (Hero::Instance()->gameOver) { cout << "You lost. Please press: !quit and restart the game!"; }
+	else if (Hero::Instance()->gameWon) { cout << "You WON! Please press: !quit and restart the game!"; }
 	// Errors
 	else { cout << "* No command found." << endl; }
 
@@ -212,10 +213,15 @@ void InputController::setPlayingField(Playingfield* setPf) { pf = setPf; }
 
 void InputController::quitGame()
 {
-	cout << "* You're not yet done " << Hero::Instance()->getUserName() << "! Are you sure to quit the game? Your progress will be lost! (Press: !yes or !no) \n";
-	string input;
-	cin >> input;
-	if (input == "!yes") { Game::Instance().setGameLoop(false); }
-	else { cout << "* Great! Let's keep playing! \n"; CheckInput(); } // Doesn't make any sense what a players types. Just keep playing :)!
+	if (Hero::Instance()->gameOver || Hero::Instance()->gameWon) {
+		cout << "See ya!";
+	}
+	else {
+		cout << "* You're not yet done " << Hero::Instance()->getUserName() << "! Are you sure to quit the game? Your progress will be lost! (Press: !yes or !no) \n";
+		string input;
+		cin >> input;
+		if (input == "!yes") { Game::Instance().setGameLoop(false); }
+		else { cout << "* Great! Let's keep playing! \n"; CheckInput(); } // Doesn't make any sense what a players types. Just keep playing :)!
+	}
 }
 

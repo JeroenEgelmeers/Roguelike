@@ -74,8 +74,8 @@ Room* Square::GetRoom(int x, int y)
 
 Square::~Square()
 {
-	delete this->up;
-	delete this->left;
-	delete this->right;
-	delete this->down;
+	//delete this->up;
+	//delete this->left;
+	//delete this->right;
+	//delete this->down;
 }

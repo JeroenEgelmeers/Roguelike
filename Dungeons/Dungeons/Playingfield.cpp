@@ -66,7 +66,8 @@ void Playingfield::goLevelUp()
 		curlevel++;
 	}
 	else
-		cout << "YOU WIN!";
+		cout << "\n\nCONGRATULATIONS!!!! \n YOU WIN!\n\n";
+		Hero::Instance()->gameWon = true;
 }
 
 void Playingfield::goLevelDown()

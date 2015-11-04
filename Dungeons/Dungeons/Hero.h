@@ -47,6 +47,8 @@ class Hero
 		void	getHeroStatsFight();
 		bool	moveHero(int direction);
 		bool	gameOver;
+		bool	gameWon;
+		bool	gamePlaying();
 	
 	protected:
 		Hero();

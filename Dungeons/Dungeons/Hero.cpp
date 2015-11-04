@@ -11,6 +11,7 @@ Hero::Hero() {
 	strength	= 2;
 	defence		= 1;
 	gameOver	= false;
+	gameWon		= false;
 }
 Hero::~Hero() {}
 
@@ -154,6 +155,16 @@ bool Hero::moveHero(int direction)
 		if (curroom->special != 0)
 			isonstairway = true;
 		return success;
+	}
+}
+
+bool Hero::gamePlaying()
+{
+	if (gameWon || gameOver) {
+		return false;
+	}
+	else {
+		return true;
 	}
 }
 
