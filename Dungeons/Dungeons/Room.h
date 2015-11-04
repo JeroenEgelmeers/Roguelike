@@ -27,12 +27,13 @@ public:
 	bool		MovePlayer(int direction);
 	bool		healer;
 	bool		getTrap();
-	int		getTrapKind();
+	int			getTrapKind();
 	void		removeTrap();
 	Item*		GetItem();
 	void		RemoveItem();
 	bool		special;
-
+	void		SetMonster(Monster* mon);
+	
 private:
 	string		generateRoomType(int type);
 	Item*		item;

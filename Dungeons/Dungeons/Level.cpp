@@ -45,6 +45,8 @@ Level::Level(int x, int y)
 
 	cout << "\n" << stairway->GetX() << " " << stairway->GetY() << "\n";
 
+	stairway->SetMonster(new Boss());
+
 	startpoint->player = Hero::Instance();
 
 	if (startpoint != nullptr)

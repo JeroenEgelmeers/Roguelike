@@ -320,6 +320,11 @@ Monster* Room::GetMonster()
 	}
 }
 
+void Room::SetMonster(Monster* mon)
+{
+	monster = mon;
+}
+
 Room::~Room()
 {
 }
