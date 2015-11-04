@@ -215,6 +215,7 @@ void InputController::quitGame()
 {
 	if (Hero::Instance()->gameOver || Hero::Instance()->gameWon) {
 		cout << "See ya!";
+		Game::Instance().setGameLoop(false);
 	}
 	else {
 		cout << "* You're not yet done " << Hero::Instance()->getUserName() << "! Are you sure to quit the game? Your progress will be lost! (Press: !yes or !no) \n";
