@@ -82,7 +82,14 @@ void Hero::setRoom(Room* room)
 
 bool Hero::moveHero(int direction)
 {
-	return curroom->MovePlayer(direction);
+	bool success = curroom->MovePlayer(direction);
+	if (curroom->special != 0)
+		isonstairway = true;
+	return success;
 }
 
+void Hero::setStairway(bool ios)
+{
+	isonstairway = ios;
+}
 

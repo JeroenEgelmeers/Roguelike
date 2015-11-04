@@ -24,6 +24,7 @@ void InputController::CheckInput() {
 			<< "[[ Move to direction:\t !north - !east - !south - !west ]] \n"
 			<< "[[ Player information:\t !stats - !inventory ]] \n"
 			<< "[[ Game information:\t !map ]] \n"
+			<< "[[ Climb Stairs:\t !climb ]] \n"
 			<< "* end of commandlist. \n";
 	}
 	// Player commands
@@ -86,8 +87,23 @@ void InputController::CheckInput() {
 	
 		// cout << "You did just pick + item.getItemName";
 	}
+
+	else if (input == "!climb")		
+	{ 
+		if (Hero::Instance()->getStairway())
+		{
+			if (Hero::Instance()->getRoom()->special == 1)
+				pf->goLevelUp();
+			else
+				pf->goLevelDown();
+		}
+		else
+			cout << "You are not standing on a stairway";
+	}
+
 	// System commands
 	else if (input == "!quit")		{ quitGame(); }
+
 	
 	// Cheat functions.
 	else if (input == "@heal")		{ Hero::Instance()->addHealth(10); cout << "@CHEAT: you gained 10 HP! \n"; }

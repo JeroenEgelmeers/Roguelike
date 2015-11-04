@@ -26,6 +26,7 @@ class Hero
 		const int		getStrength()	{ return strength;	}
 		const int		getDefence()	{ return defence;	}
 		Room*			getRoom()		{ return curroom;   }
+		const bool		getStairway()	{ return isonstairway; }
 
 		// Setters
 		void	increaseLevel(int value);
@@ -37,6 +38,7 @@ class Hero
 		void	increaseDefence(int value);
 		bool	setUserName(string inputUserName);
 		void	setRoom(Room* room);
+		void	setStairway(bool ios);
 		string	getRoomDescription();
 
 		// Methods
@@ -50,6 +52,7 @@ class Hero
 
 	private:
 		Room*	curroom;
+		bool	isonstairway;
 		int		level;
 		int		health;
 		float	xp;

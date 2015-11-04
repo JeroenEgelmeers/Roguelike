@@ -26,6 +26,7 @@ public:
 	bool		MovePlayer(int direction);
 	Item*		GetItem();
 	void		RemoveItem();
+	bool		special;
 private:
 	string		generateRoomType(int type);
 	Item*		item;

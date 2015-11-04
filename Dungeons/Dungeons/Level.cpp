@@ -40,6 +40,10 @@ Level::Level(int x, int y)
 	startpoint->setSpecialDescription(0);
 	stairway->setSpecialDescription(1);
 
+	stairway->special = 2;
+	startpoint->special = 1;
+
+	cout << "\n" << stairway->GetX() << " " << stairway->GetY() << "\n";
 
 	startpoint->player = Hero::Instance();
 

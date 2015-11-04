@@ -4,6 +4,7 @@
 
 Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
 {
+	special = 0;
 	description = "Geen Beschrijving";
 	symbol = 'N';
 	generateRoomDescription();
