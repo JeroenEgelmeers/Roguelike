@@ -9,10 +9,12 @@
 
 using namespace std;
 
+class Level;
+
 class Room: public Square
 {
 public:
-	Room(int x, int y, Square* parrent);
+	Room(int x, int y, Square* parrent, Level* level);
 	~Room();
 
 	void		CreateNeighbours(int x, int y);

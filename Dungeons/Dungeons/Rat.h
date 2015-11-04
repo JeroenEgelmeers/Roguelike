@@ -2,7 +2,7 @@
 class Rat: public Monster
 {
 public:
-	Rat();
+	Rat(int multiplier);
 	~Rat();
 };
 

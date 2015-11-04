@@ -2,11 +2,11 @@
 #include "Goblin.h"
 
 
-Goblin::Goblin() : Monster()
+Goblin::Goblin(int multiplier) : Monster()
 {
 	// Hard coded, can be changed later..
 	setMonsterName("Goblin");
-	setStats(3, 4, 2, 2, 2);
+	setStats(3 * multiplier, 4 * multiplier, 2 * multiplier, 2 * multiplier, 2 * multiplier);
 	setMonsterDescription("An evil Goblin");
 }
 

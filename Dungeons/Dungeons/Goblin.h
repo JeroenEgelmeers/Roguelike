@@ -2,7 +2,7 @@
 class Goblin : public Monster
 {
 public:
-	Goblin();
+	Goblin(int multiplier);
 	~Goblin();
 };
 

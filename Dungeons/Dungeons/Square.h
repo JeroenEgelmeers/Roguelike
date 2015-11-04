@@ -1,11 +1,12 @@
 #pragma once
 
 class Room;
+class Level;
 
 class Square
 {
 public:
-	Square(int x, int y, Square* parrent);
+	Square(int x, int y, Square* parrent, Level* level);
 	~Square();
 	int GetX();
 	int GetY();
@@ -20,6 +21,7 @@ public:
 	Square* down;
 protected:
 	int x;
+	Level* level;
 	char symbol;
 	int y;
 };

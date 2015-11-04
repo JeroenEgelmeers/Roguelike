@@ -1,8 +1,10 @@
 #include "stdafx.h"
 #include "Level.h"
 
-Level::Level(int x, int y)
+Level::Level(int x, int y, int level)
 {
+	this->level = level+1;
+
 	int startx = Globals::Random(10);
 	int starty = Globals::Random(10);
 	int stairx = Globals::Random(10);
@@ -16,16 +18,16 @@ Level::Level(int x, int y)
 
 	if (startx == 0 && starty == 0)
 	{
-		startpoint = new Room(startx, starty, nullptr);
+		startpoint = new Room(startx, starty, nullptr, this);
 		topleft = startpoint;
 	}
 	else if (stairx == 0 && stairy == 0)
 	{
-		stairway = new Room(stairx, stairy, nullptr);
+		stairway = new Room(stairx, stairy, nullptr, this);
 		topleft = stairway;
 	}
 	else
-		topleft = new Room(0, 0, nullptr);
+		topleft = new Room(0, 0, nullptr, this);
 
 
 	topleft->CreateNeighbours(x, y);
@@ -45,7 +47,7 @@ Level::Level(int x, int y)
 
 	cout << "\n" << stairway->GetX() << " " << stairway->GetY() << "\n";
 
-	stairway->SetMonster(new Boss());
+	stairway->SetMonster(new Boss(level));
 
 	startpoint->player = Hero::Instance();
 

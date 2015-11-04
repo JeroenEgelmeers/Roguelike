@@ -45,7 +45,7 @@ void Playingfield::Generate()
 
 		for (int i = 0; i < lsize; i++)
 		{
-			levels.push_back(new Level(xsize, ysize));
+			levels.push_back(new Level(xsize, ysize, i));
 		}
 		levels[0]->SetPlayer();
 		curlevel = 0;

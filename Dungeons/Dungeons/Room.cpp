@@ -1,8 +1,7 @@
 #include "stdafx.h"
 #include "Room.h"
 
-
-Room::Room(int x, int y, Square* parrent) : Square(x, y, parrent)
+Room::Room(int x, int y, Square* parrent, Level* level) : Square(x, y, parrent, level)
 {
 	special = 0;
 	description = "Geen Beschrijving";
@@ -73,12 +72,12 @@ void Room::CreateNeighbours(int x, int y)
 {
 	if (x > 0)
 	{
-		right = new Hallway(this->x + 1, this->y, this);
+		right = new Hallway(this->x + 1, this->y, this, level);
 		right->CreateNeighbours(x - 1, y);
 	}
 	if (this->x == 0 && y > 0)
 	{
-		down = new Hallway(this->x, this->y + 1, this);
+		down = new Hallway(this->x, this->y + 1, this, level);
 		down->CreateNeighbours(x, y - 1);
 	}
 }
@@ -298,10 +297,10 @@ void Room::generateMonster()
 	int randomMonster = rand() % 10;
 	switch (randomMonster) {
 	case 0:
-		monster = new Rat();
+		monster = new Rat(level->level);
 		break;
 	case 1:
-		monster = new Goblin();
+		monster = new Goblin(level->level);
 		break;
 	default:
 		// No monster

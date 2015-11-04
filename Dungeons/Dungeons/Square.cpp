@@ -3,8 +3,10 @@
 
 using namespace std;
 
-Square::Square(int x, int y, Square* parrent)
+Square::Square(int x, int y, Square* parrent, Level* level)
 {
+	this->level = level;
+
 	this->x = x;
 	this->y = y;
 	symbol = ' ';
@@ -36,7 +38,7 @@ int Square::GetY()
 void Square::CreateNeighbours(int x, int y)
 {
 	// empty squares are never on edges, and are only and always surrounded by hallways
-	right = new Hallway(this->x + 1, this->y, this);
+	right = new Hallway(this->x + 1, this->y, this, level);
 	right->CreateNeighbours(x, y);
 }
 
