@@ -1,2 +1,2 @@
-# roguelikeCPP
-roguelike eindopdracht C++ Avans Hogeschool
+# Roguelike
+Roguelike eindopdracht C++1 Avans Hogeschool
